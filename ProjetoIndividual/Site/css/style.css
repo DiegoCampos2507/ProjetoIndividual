@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: poppins, arial;
+            background-image: url("https://static.vecteezy.com/ti/fotos-gratis/p2/6263904-fundo-abstrato-branco-pano-de-fundo-para-design-de-apresentacao-para-site-gratis-foto.jpg");
+        }
+
+        .background {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .background-img {
+            position: absolute;
+            z-index: -999;
+            width: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            margin: auto;
+            padding: 8px;
+        }
+
+        .header {
+            border-bottom: 2px solid #097924;
+            backdrop-filter: blur(15px);
+            width: 100%;
+            position: fixed;
+            z-index: 999;
+        }
+
+        .header .container {
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            object-fit: cover;
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        .titulo {
+            color: #064324;
+            cursor: pointer;
+            background-color: transparent;
+            border: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .title {
+            margin-left: 10px;
+            font-family: poppins, arial;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            justify-content: space-between;
+            width: 300px;
+            color: #097924;
+            align-items: center;
+        }
+
+        .navbar button {
+            background-color: transparent;
+            color: #097924;
+            border: 0px;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: poppins, arial;
+            color: #2f4545;
+        }
+
+        .content {
+            margin-left: 300px;
+            margin-right: 300px;
+            margin-top: 50px;
+        }
+
+        .main-title {
+            display: flex;
+            justify-content: center;
+            font-size: 50px;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,36,1) 52%, rgba(0,153,255,1) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .texto1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            position: relative;
+            margin-top: 100px;
+        }
+
+        .desc-img1 {
+            text-align: justify;
+        }
+
+        .texto1 img {
+            border-radius: 15px;
+            margin-left: 15px;
+        }
+
+        .texto2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            position: relative;
+            margin-top: 200px;
+            margin-bottom: 200px;
+        }
+
+        .texto2 img {
+            border-radius: 15px;
+            margin-right: 15px;
+            width: 600px;
+        }
+
+        .rodape {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #064324;
+            color: azure;
+            font-family: poppins, arial;
+            height: fit-content;
+            width: 100%;
+        }
+
+        .conteudo-contato {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: 500px;
+        }
+
+        .contato {
+            display: flex;
+            justify-self: center;
+            align-items: center;
+        }
+
+        .mensagem {
+            background-color: lightgrey;
+            border: 2px solid white;
+            border-radius: 2px;
+            height: 350px;
+            width: 350px;
+            display: flex;
+            justify-self: center;
+            align-items: center;
+        }
