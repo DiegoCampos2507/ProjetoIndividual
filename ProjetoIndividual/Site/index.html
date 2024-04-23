@@ -4,69 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Well Being | Início</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/stylewellbeing.css">
+    <link rel="shortcut icon" href="images/icone-removebg-preview.png" type="image/x-icon">
 </head>
 
 <body>
     <div class="background">
         <div class="header">
             <div class="container">
-                <button onclick="inicial_page()" class="titulo">
-                    <div class="logo">
-                        <i class='bx bxl-graphql'></i>
-                    </div>
-                    <span class="title">Title</span>
-                </button>
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logoExtendida.png" alt="Logo extensa">
+                    </a>
+                </div>
                 <ul class="navbar">
-                    <button onclick="home()">Página inicial</button>
-                    <button onclick="sobrenos()">Contato</button>
+                    <a href="index.html">
+                        <button class="agora">Página inicial</button>
+                    </a>
+                    <a>
+                        <button>Sobre Nós</button>
+                    </a>
                     <li>|</li>
-                    <button>Sign in</button>
-                    <button>Log in</button>
+                    <a href="">
+                        <button>Login</button>
+                    </a>
+                    <a href="">
+                        <button>Cadastro</button>
+                    </a>
                 </ul>
             </div>
         </div>
-        <div class="content">
+        <div class="main">
             <div id="home" class="main-title">
                 <u>
-                    <h1>Main Title</h1>
+                    <h1>Saúde Mental</h1>
                 </u>
             </div>
-            <span class="texto1">
-                <div class="desc-img1">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum pariatur hic nihil magnam suscipit
-                    adipisci
-                    consequuntur vitae vero dolore quod voluptatem rem accusamus ipsam id culpa tenetur voluptates,
-                    itaque
-                    quisquam!
+            <hr>
+            <span class="texto">
+                <div class="desc-img">
+                    <h3>Definição</h3>
+                    Saúde mental se refere ao estado de bem-estar de cada um que possibilita que este desenvolva suas habilidades pessoais para enfrentar os obstáculos da vida. <br> <br> 
+                    Ter saúde mental, de acordo com a OMS (Organização Mundial da Saúde), significa que o indivíduo está em tal estado de bem-estar que consegue lidar com o estresse rotineiro, consegue ser produtivo e ainda contribuir com a sociedade. <br> <br>
+                    Em caso contrario, o índividuo perde o manejo das emoções, manifestando alterações físicas, comportamentais e até hormonais.
                 </div>
                 <div class="img1">
-                    <img src="https://cc-prod.scene7.com/is/image/CCProdAuthor/FF-SEO-text-to-image-marquee-mobile-2x?$pjpeg$&jpegSize=100&wid=600"
-                        alt="">
+                    <img src="images/conceito-de-memoria-com-pecas-de-quebra-cabeca-e-cabeca-scaled.jpg" alt="">
                 </div>
             </span>
-            <span class="texto2">
+            <hr>
+            <span class="texto">
                 <div class="img2">
-                    <img src="data:image/jpeg;base64,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"
-                        alt="">
+                    <img src="images/saude-mental-e-saude-do-coracao.png" alt="">
                 </div>
-                <div class="desc-img2">
+                <div class="desc-img">
+                    <h3>Importância</h3>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum pariatur hic nihil magnam
                     suscipit
                     adipisci
                     consequuntur vitae vero dolore quod voluptatem rem accusamus ipsam id culpa tenetur voluptates,
                     itaque
                     quisquam! <br>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti, provident? Sequi recusandae quibusdam aliquam adipisci odio aperiam labore voluptas commodi modi, consequuntur officia? Delectus possimus fugiat impedit veniam accusamus labore.
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti, provident? Sequi recusandae
+                    quibusdam aliquam adipisci odio aperiam labore voluptas commodi modi, consequuntur officia? Delectus
+                    possimus fugiat impedit veniam accusamus labore.
                 </div>
             </span>
+            <hr>
+            <span class="boxes">
+                <div class="card">
+                    <h2>Missão</h2>
+                    Possibilitar a troca de informações e vivências entre os usuários para uma melhor comunicação geral.
+                </div>
+                <div class="card">
+                    <h2>Visão</h2>
+                    Fazer com que o conceito de coletivo se torne cada vez mais presente, além disso disseminar o conhecimento psicológico uns com os outros.
+                </div>
+                <div class="card">
+                    <h2>Valores</h2>
+                    - Empatia; <br>
+                    - Respeito; <br>
+                    - Solidariedade; <br>
+                    - Coletividade; <br>
+                </div>
+            </span>
+            <hr>
+            <div class="chamada">
+                <h2>Participe da comunidade!</h2>
+                <h3>Você não está sozinho</h3>
+                <Button>Cadastre-se</Button>
+            </div>
         </div>
-        <div id="contato" class="rodape">
-            <div class="conteudo-contato">
-                <span class="contato">Mensagem para contato</span>
-                <input class="mensagem" placeholder="Digite aqui sua mensagem..."></input>
+        <div id="contato" class="footer">
+            <div class="main">
+                <div class="conteudo-contato">
+                    <label for="mensagem-contato" class="teste">Mensagem para contato
+                        <input id="mensagem-contato" class="mensagem" placeholder="Digite aqui sua mensagem..."></input>
+                    </label>
+                    <img src="images/logoSimples.png" alt="Logo simples">
+                </div>
             </div>
         </div>
     </div>
@@ -75,13 +113,8 @@
 </html>
 
 <script>
-    function inicial_page() {
-        window.location.replace("file:///C:/Users/Djego/.vscode/ProjetosVSCode/Projeto%20Pessoal/teste.html");
-    }
     function sobrenos() {
         window.location.href = " #contato"
     }
-    function home() {
-        window.location.href = " #home"
-    }
+
 </script>
