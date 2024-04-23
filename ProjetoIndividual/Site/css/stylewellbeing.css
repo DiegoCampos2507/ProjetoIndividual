@@ -21,6 +21,7 @@ body {
 .background {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100vh;
 }
@@ -74,22 +75,18 @@ body {
     width: 20vw;
 }
 
-.navbar button {
-    background-color: transparent;
-    border: 0px;
-    cursor: pointer;
-    font-weight: 500;
-    font-family: poppins, arial;
+.navbar a {
+    text-decoration: none;
     color: white;
+    font-weight: 300;
 }
 
-.agora {
-    font-weight: 600;
+.navbar .agora {
+    text-decoration: underline;
 }
 
 .main {
-    margin-left: 300px;
-    margin-right: 300px;
+    width: 75vw;
     margin-top: 50px;
     height: fit-content;
     color: aliceblue;
@@ -150,6 +147,8 @@ body {
     background-color: #b59d30;
     color: aliceblue;
     display: flex;
+    margin-top: 20vh;
+    width: 100%;
 }
 
 .conteudo-contato {
@@ -202,4 +201,57 @@ body {
     transform: scale(110%, 110%);
     color: whitesmoke;
     border: whitesmoke 2px solid;
+}
+
+.chamada {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chamada h2 {
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+
+.chamada h3 {
+    margin-top: 0;
+    font-size: 50px;
+}
+
+.chamada button {
+    background-color: #b59d30;
+    border: black 3px solid;
+    border-radius: 45px;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    width: 375px;
+    height: 125px;
+}
+
+hr {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.selfie {
+    background-color: #8c7729;
+    width: 50%;
+    height: 50vh;
+    border-radius: 50px;
+}
+
+.sobremim {
+    margin-top: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sobremim .desc-img {
+    width: 40%;
+}
+
+.sobremim .desc-img span {
+    font-style: italic;
 }
