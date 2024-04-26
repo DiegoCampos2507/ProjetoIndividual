@@ -37,8 +37,14 @@ body {
     border-bottom: 2px solid #b59d30;
     backdrop-filter: blur(15px);
     width: 100vw;
+    height: 20%;
     position: fixed;
     z-index: 999;
+}
+
+.fantasma {
+    width: 100vw;
+    height: 20%;
 }
 
 .header .container {
@@ -69,10 +75,10 @@ body {
     flex-direction: row;
     list-style: none;
     justify-content: space-between;
-    width: 300px;
     color: #b59d30;
     align-items: center;
-    width: 20vw;
+    width: 30vw;
+    font-size: 1em;
 }
 
 .navbar a {
@@ -87,6 +93,7 @@ body {
 
 .main {
     width: 75vw;
+    height: 80%;
     margin-top: 50px;
     height: fit-content;
     color: aliceblue;
@@ -138,7 +145,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    width: 100%;
+    width: 75vw;
     margin-top: 100px;
     margin-bottom: 100px;
 }
@@ -159,7 +166,7 @@ body {
 
 }
 
-.teste {
+.mensagem-contato {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -210,24 +217,30 @@ body {
 }
 
 .chamada h2 {
-    font-size: 75px;
+    font-size: 4em;
     margin-bottom: 10px;
 }
 
 .chamada h3 {
     margin-top: 0;
-    font-size: 50px;
+    font-size: 3em;
 }
 
 .chamada button {
     background-color: #b59d30;
-    border: black 3px solid;
+    border: black 2px solid;
     border-radius: 45px;
     color: black;
     font-size: 30px;
     font-weight: bold;
-    width: 375px;
-    height: 125px;
+    width: 325px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.chamada button:hover {
+    background-color: white;
+    transform: scale(110%, 110%);
 }
 
 hr {
@@ -240,12 +253,22 @@ hr {
     width: 50%;
     height: 50vh;
     border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.selfie img {
+    width: 30vh;
 }
 
 .sobremim {
     margin-top: 20vh;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .sobremim .desc-img {
@@ -254,4 +277,12 @@ hr {
 
 .sobremim .desc-img span {
     font-style: italic;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: beige;
+    color: black;
 }
