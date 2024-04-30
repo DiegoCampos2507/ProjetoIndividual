@@ -37,14 +37,15 @@ body {
     border-bottom: 2px solid #b59d30;
     backdrop-filter: blur(15px);
     width: 100vw;
-    height: 20%;
+    height: 11vh;
     position: fixed;
     z-index: 999;
 }
 
 .fantasma {
     width: 100vw;
-    height: 20%;
+    height: 11vh;
+    margin-bottom: 200px;
 }
 
 .header .container {
@@ -88,13 +89,12 @@ body {
 }
 
 .navbar .agora {
+    font-weight: 600;
     text-decoration: underline;
 }
 
 .main {
     width: 75vw;
-    height: 80%;
-    margin-top: 50px;
     height: fit-content;
     color: aliceblue;
 }
@@ -110,7 +110,6 @@ body {
 }
 
 .main-title h1 {
-    margin-top: 7rem;
     font-weight: 500;
 }
 
@@ -265,7 +264,6 @@ hr {
 }
 
 .sobremim {
-    margin-top: 20vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -279,10 +277,46 @@ hr {
     font-style: italic;
 }
 
+.main-form {
+    width: 75vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
 .formulario {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: beige;
     color: black;
+    height: fit-content;
+    width: fit-content;
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: #b59d30 2px solid;
+}
+
+.formulario h1 {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.campo p {
+    margin: 0;
+}
+
+.formulario button {
+    margin-top: 15px;
+    background-color: #fff;
+    cursor: pointer;
+    color: black;
+    border: black 1px solid;
+    border-radius: 5px;
+}
+
+.formulario button:hover {
+    background-color: #b59d30;
+    color: #fff;
+    transform: scale(105%, 105%);
 }
