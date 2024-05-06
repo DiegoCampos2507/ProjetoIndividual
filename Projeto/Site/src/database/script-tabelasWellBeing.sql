@@ -5,6 +5,7 @@ USE WellBeing;
 CREATE TABLE usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
+    sobrenome VARCHAR(45),
     dtNasc DATE,
     email VARCHAR(45),
     senha VARCHAR(45)

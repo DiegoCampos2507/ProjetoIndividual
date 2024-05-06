@@ -37,7 +37,7 @@ body {
     border-bottom: 2px solid #b59d30;
     backdrop-filter: blur(15px);
     width: 100vw;
-    height: 11vh;
+    height: fit-content;
     position: fixed;
     z-index: 999;
 }
@@ -75,11 +75,12 @@ body {
     display: flex;
     flex-direction: row;
     list-style: none;
-    justify-content: space-between;
     color: #b59d30;
     align-items: center;
     width: 30vw;
     font-size: 1em;
+    gap: 1.5em;
+    padding: 0;
 }
 
 .navbar a {
@@ -89,7 +90,7 @@ body {
 }
 
 .navbar .agora {
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: underline;
 }
 
@@ -100,6 +101,7 @@ body {
 }
 
 .main-title {
+    margin-top: 0;
     display: flex;
     justify-content: center;
     font-size: 50px;
@@ -151,32 +153,38 @@ body {
 
 .footer {
     background-color: #b59d30;
-    color: aliceblue;
     display: flex;
+    justify-content: center;
     margin-top: 20vh;
     width: 100%;
 }
 
-.conteudo-contato {
-    width: 100%;
-    height: 100%;
+.contato {
     display: flex;
     flex-direction: row;
-
+    height: 100%;
+    justify-content: space-evenly;
 }
 
-.mensagem-contato {
+.contato p {
+    margin: 0;
+}
+
+.contato .copyright {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+}
+
+.contato .conteudo  {
+    width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.mensagem {
-    background-color: lightgrey;
-    border: 2px solid white;
-    border-radius: 2px;
-    height: 250px;
-    width: 200px;
+    justify-content: center;
+    align-items: center;
 }
 
 .boxes {
@@ -288,7 +296,7 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: beige;
+    background-color: ivory;
     color: black;
     height: fit-content;
     width: fit-content;
@@ -306,6 +314,11 @@ hr {
     margin: 0;
 }
 
+.campo input {
+    border: black 1px solid;
+    border-radius: 5%;
+}
+
 .formulario button {
     margin-top: 15px;
     background-color: #fff;
@@ -313,10 +326,22 @@ hr {
     color: black;
     border: black 1px solid;
     border-radius: 5px;
+    width: 125px;
+    height: 25px;
 }
 
 .formulario button:hover {
     background-color: #b59d30;
     color: #fff;
     transform: scale(105%, 105%);
+}
+
+.mensagem_sucesso {
+    position: absolute;
+    background-color: aliceblue;
+    border-radius: 15px;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
 }

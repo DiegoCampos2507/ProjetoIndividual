@@ -46,6 +46,10 @@
                     <input type="text" placeholder="Digite seu nome" id="inp_nome">
                 </div>
                 <div class="campo">
+                    <p>Sobrenome:</p>
+                    <input type="text" placeholder="Digite seu sobrenome" id="inp_sobrenome">
+                </div>
+                <div class="campo">
                     <p>Data de Nascimento:</p>
                     <input type="text" placeholder="Digite sua data de nascimento" id="inp_nasc">
                 </div>
@@ -61,17 +65,23 @@
                     <p>Confirme sua senha:</p>
                     <input type="password" placeholder="Confirme sua senha" id="inp_confirmacao">
                 </div>
-                <div id="div_mensagem" style="color: brown;"></div>
+                <div id="mensagem_erro" style="color: brown;"></div>
                 <button onclick="cadastrar()">Cadastrar</button>
             </div>
         </div>
-        <div class="footer">
+        <div id="mensagem_sucesso">
+        </div>
+        <div class="footer">    
             <div class="main">
-                <div class="conteudo-contato">
-                    <label for="mensagem-contato" class="teste">Mensagem para contato
-                        <input id="mensagem-contato" class="mensagem" placeholder="Digite aqui sua mensagem..."></input>
-                    </label>
-                    <img src="assets/images/logoSimples.png" alt="Logo simples">
+                <div class="contato">
+                    <div class="copyright">
+                        <img style="width: 30px;" src="assets/images/logoSimples.png" alt="Logo simples">
+                        <p>©️ Copyright 2024 - Diego Campos</p>
+                    </div>
+                    <div class="conteudo">
+                        <p>WellBeing@gmail.com</p>
+                        <p>(99)99999-9999</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,15 +93,16 @@
 <script>
     function cadastrar() {
         var nomeVar = inp_nome.value;
+        var sobrenomeVar = inp_sobrenome.value;
         var nascVar = inp_nasc.value;
         var emailVar = inp_email.value;
         var senhaVar = inp_senha.value;
         var confirmacaoVar= inp_confirmacao.value;
 
-        if(nomeVar == "" || nascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar== ""){
-            div_mensagem.innerHTML = `Todos os campos devem ser preenchidos`
+        if(nomeVar == "" || sobrenomeVar == "" || nascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar== ""){
+            mensagem_erro.innerHTML = `Todos os campos devem ser preenchidos`
         } else if (senhaVar != confirmacaoVar) {
-            div_mensagem.innerHTML = `A confirmação de senha falhou`
+            mensagem_erro.innerHTML = `A confirmação de senha falhou`
         } else {
             fetch("/user/cadastrar", {
                 method: "POST",
@@ -100,6 +111,7 @@
                 },
                 body: JSON.stringify({
                     nomeServer: nomeVar,
+                    sobrenomeServer: sobrenomeVar,
                     nascServer: nascVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar
@@ -109,14 +121,13 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    cardErro.style.display = "block";
                     
-                    mensagem_erro.innerHTML =
+                    mensagem_sucesso.innerHTML =
                     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
                     
                     setTimeout(() => {
                         window.location = "login.html";
-                    }, "2000");
+                    }, 3000);
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
