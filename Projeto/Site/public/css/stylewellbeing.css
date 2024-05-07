@@ -74,6 +74,7 @@ body {
 .navbar {
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     list-style: none;
     color: #b59d30;
     align-items: center;
@@ -294,29 +295,16 @@ hr {
 
 .formulario {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    background-color: ivory;
+    background-color: rgb(255, 255, 255);
     color: black;
     height: fit-content;
-    width: fit-content;
+    width: 55%;
+    height: 55vh;
     padding: 15px 25px;
     border-radius: 15px;
     border: #b59d30 2px solid;
-}
-
-.formulario h1 {
-    margin: 0;
-    margin-bottom: 15px;
-}
-
-.campo p {
-    margin: 0;
-}
-
-.campo input {
-    border: black 1px solid;
-    border-radius: 5%;
 }
 
 .formulario button {
@@ -334,6 +322,74 @@ hr {
     background-color: #b59d30;
     color: #fff;
     transform: scale(105%, 105%);
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(216, 213, 206);
+    border-radius: 5px;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    border-right: #1e1f24 1px solid;
+}
+
+.cadastro-img {
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    height: 100%;
+    background-image: url("fotoLogin.png");
+    background-position-x: center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(216, 213, 206);
+    border-radius: 5px;
+    width: 50%;
+    height: 100%;
+    border-left: #1e1f24 1px solid;
+}
+
+.login-img{
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    height: 100%;
+    background-image: url("fotoCadastro.png");
+    background-position-x: -20px;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.cadastro-img img{
+    width: 100%;
+}
+
+.formulario h1 {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.campo p {
+    margin: 0;
+}
+
+.campo input {
+    border: black 1px solid;
+    border-radius: 2px;
 }
 
 .mensagem_sucesso {

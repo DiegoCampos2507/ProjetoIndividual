@@ -40,38 +40,43 @@
         </div>
         <div class="main-form">
             <div class="formulario">
-                <h1>Cadastre-se já!</h1>
-                <div class="campo">
-                    <p>Nome:</p>
-                    <input type="text" placeholder="Digite seu nome" id="inp_nome">
+                <div class="cadastro">
+                    <h1>Cadastre-se já!</h1>
+                    <div class="campo">
+                        <p>Nome:</p>
+                        <input type="text" placeholder="Digite seu nome" id="inp_nome">
+                    </div>
+                    <div class="campo">
+                        <p>Sobrenome:</p>
+                        <input type="text" placeholder="Digite seu sobrenome" id="inp_sobrenome">
+                    </div>
+                    <div class="campo">
+                        <p>Data de Nascimento:</p>
+                        <input type="text" placeholder="Digite sua data de nascimento" id="inp_nasc">
+                    </div>
+                    <div class="campo">
+                        <p>Email:</p>
+                        <input type="text" placeholder="Digite seu email" id="inp_email">
+                    </div>
+                    <div class="campo">
+                        <p>Senha:</p>
+                        <input type="password" placeholder="Digite sua senha" id="inp_senha">
+                    </div>
+                    <div class="campo">
+                        <p>Confirme sua senha:</p>
+                        <input type="password" placeholder="Confirme sua senha" id="inp_confirmacao">
+                    </div>
+                    <div id="mensagem_erro" style="color: brown;"></div>
+                    <button onclick="cadastrar()">Cadastrar</button>
                 </div>
-                <div class="campo">
-                    <p>Sobrenome:</p>
-                    <input type="text" placeholder="Digite seu sobrenome" id="inp_sobrenome">
+                <div class="cadastro-img">
+                    <p>Já possui Login? <a href="login.html">Entrar</a></p>
                 </div>
-                <div class="campo">
-                    <p>Data de Nascimento:</p>
-                    <input type="text" placeholder="Digite sua data de nascimento" id="inp_nasc">
-                </div>
-                <div class="campo">
-                    <p>Email:</p>
-                    <input type="text" placeholder="Digite seu email" id="inp_email">
-                </div>
-                <div class="campo">
-                    <p>Senha:</p>
-                    <input type="password" placeholder="Digite sua senha" id="inp_senha">
-                </div>
-                <div class="campo">
-                    <p>Confirme sua senha:</p>
-                    <input type="password" placeholder="Confirme sua senha" id="inp_confirmacao">
-                </div>
-                <div id="mensagem_erro" style="color: brown;"></div>
-                <button onclick="cadastrar()">Cadastrar</button>
             </div>
         </div>
         <div id="mensagem_sucesso">
         </div>
-        <div class="footer">    
+        <div class="footer">
             <div class="main">
                 <div class="contato">
                     <div class="copyright">
@@ -97,9 +102,9 @@
         var nascVar = inp_nasc.value;
         var emailVar = inp_email.value;
         var senhaVar = inp_senha.value;
-        var confirmacaoVar= inp_confirmacao.value;
+        var confirmacaoVar = inp_confirmacao.value;
 
-        if(nomeVar == "" || sobrenomeVar == "" || nascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar== ""){
+        if (nomeVar == "" || sobrenomeVar == "" || nascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar == "") {
             mensagem_erro.innerHTML = `Todos os campos devem ser preenchidos`
         } else if (senhaVar != confirmacaoVar) {
             mensagem_erro.innerHTML = `A confirmação de senha falhou`
@@ -117,26 +122,26 @@
                     senhaServer: senhaVar
                 }),
             })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-                if (resposta.ok) {
-                    
-                    mensagem_sucesso.innerHTML =
-                    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-                    
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, 3000);
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-        } 
-        
+                    if (resposta.ok) {
+
+                        mensagem_sucesso.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, 3000);
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+        }
+
 
     }
 </script>
