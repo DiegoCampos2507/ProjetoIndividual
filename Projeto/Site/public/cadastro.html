@@ -40,41 +40,43 @@
         </div>
         <div class="main-form">
             <div class="formulario">
-                <div class="cadastro">
-                    <h1>Cadastre-se já!</h1>
-                    <div class="campo">
-                        <p>Nome:</p>
-                        <input type="text" placeholder="Digite seu nome" id="inp_nome">
+                <div class="formulario-cadastro">
+                    <div class="cadastro">
+                        <h1>Cadastre-se já!</h1>
+                        <div class="campo">
+                            <p>Nome:</p>
+                            <input type="text" placeholder="Digite seu nome" id="inp_nome">
+                        </div>
+                        <div class="campo">
+                            <p>Sobrenome:</p>
+                            <input type="text" placeholder="Digite seu sobrenome" id="inp_sobrenome">
+                        </div>
+                        <div class="campo">
+                            <p>Data de Nascimento:</p>
+                            <input type="text" placeholder="Digite sua data de nascimento" id="inp_nasc">
+                        </div>
+                        <div class="campo">
+                            <p>Email:</p>
+                            <input type="text" placeholder="Digite seu email" id="inp_email">
+                        </div>
+                        <div class="campo">
+                            <p>Senha:</p>
+                            <input type="password" placeholder="Digite sua senha" id="inp_senha">
+                        </div>
+                        <div class="campo">
+                            <p>Confirme sua senha:</p>
+                            <input type="password" placeholder="Confirme sua senha" id="inp_confirmacao">
+                        </div>
+                        <div id="mensagem_erro" style="color: brown;"></div>
+                        <button onclick="cadastrar()">Cadastrar</button>
                     </div>
-                    <div class="campo">
-                        <p>Sobrenome:</p>
-                        <input type="text" placeholder="Digite seu sobrenome" id="inp_sobrenome">
+                    <div class="cadastro-img">
+                        <p>Já possui Login? <a href="login.html">Entrar</a></p>
                     </div>
-                    <div class="campo">
-                        <p>Data de Nascimento:</p>
-                        <input type="text" placeholder="Digite sua data de nascimento" id="inp_nasc">
-                    </div>
-                    <div class="campo">
-                        <p>Email:</p>
-                        <input type="text" placeholder="Digite seu email" id="inp_email">
-                    </div>
-                    <div class="campo">
-                        <p>Senha:</p>
-                        <input type="password" placeholder="Digite sua senha" id="inp_senha">
-                    </div>
-                    <div class="campo">
-                        <p>Confirme sua senha:</p>
-                        <input type="password" placeholder="Confirme sua senha" id="inp_confirmacao">
-                    </div>
-                    <div id="mensagem_erro" style="color: brown;"></div>
-                    <button onclick="cadastrar()">Cadastrar</button>
-                </div>
-                <div class="cadastro-img">
-                    <p>Já possui Login? <a href="login.html">Entrar</a></p>
                 </div>
             </div>
-        </div>
-        <div id="mensagem_sucesso">
+            <div id="mensagem_sucesso">
+            </div>
         </div>
         <div class="footer">
             <div class="main">

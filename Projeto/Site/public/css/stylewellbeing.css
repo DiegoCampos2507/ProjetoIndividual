@@ -292,16 +292,29 @@ hr {
     display: flex;
     justify-content: center;
 }
-
-.formulario {
+ 
+/* #region cadastro/login */
+.formulario-cadastro {
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: rgb(255, 255, 255);
     color: black;
-    height: fit-content;
-    width: 55%;
-    height: 55vh;
+    height: 70vh;
+    width: 35vw;
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: #b59d30 2px solid;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    height: 47vh;
+    width: 35vw;
     padding: 15px 25px;
     border-radius: 15px;
     border: #b59d30 2px solid;
@@ -344,8 +357,8 @@ hr {
     width: 50%;
     height: 100%;
     background-image: url("fotoLogin.png");
-    background-position-x: center;
     background-size: cover;
+    background-position-x: 63%;
     border-radius: 5px;
 }
 
@@ -369,18 +382,28 @@ hr {
     width: 50%;
     height: 100%;
     background-image: url("fotoCadastro.png");
-    background-position-x: -20px;
     background-size: cover;
     border-radius: 5px;
 }
 
-.cadastro-img img{
-    width: 100%;
+.formulario a {
+    font-size: 1em;
+    color: #a18b39;
+    text-decoration: underline;
+}
+
+.login-img p {
+    font-size: 0.8em;
+}
+
+.cadastro-img p {
+    font-size: 0.8em;
 }
 
 .formulario h1 {
     margin: 0;
     margin-bottom: 15px;
+    font-size: 1.3em;
 }
 
 .campo p {
@@ -401,3 +424,5 @@ hr {
     top: 50%;
     left: 50%;
 }
+
+/* #endregion */
