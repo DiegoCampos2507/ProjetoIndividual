@@ -7,8 +7,8 @@ router.post("/cadastrar", function (req, res) {
     userController.cadastrar(req, res);
 });
 
-router.get("/listar", function (req, res) {
-    userController.listar(req, res);
+router.post("/autenticar", function (req, res) {
+    userController.autenticar(req, res);
 });
 
 module.exports = router;
