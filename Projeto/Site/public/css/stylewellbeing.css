@@ -310,7 +310,7 @@ hr {
     align-items: center;
     background-color: rgb(255, 255, 255);
     color: black;
-    height: 70vh;
+    height: 110%;
     width: 35vw;
     padding: 15px 25px;
     border-radius: 15px;
@@ -323,7 +323,7 @@ hr {
     align-items: center;
     background-color: rgb(255, 255, 255);
     color: black;
-    height: 47vh;
+    height: 37vh;
     width: 35vw;
     padding: 15px 25px;
     border-radius: 15px;
