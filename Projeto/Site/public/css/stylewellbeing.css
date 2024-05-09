@@ -25,6 +25,7 @@ body {
     width: 100%;
     height: 100vh;
 }
+
 /* #endregion */
 
 /* #region Header */
@@ -39,6 +40,7 @@ body {
     border-bottom: 2px solid #b59d30;
     backdrop-filter: blur(15px);
     width: 100vw;
+    height: 11%;
     height: fit-content;
     position: fixed;
     z-index: 999;
@@ -46,7 +48,7 @@ body {
 
 .fantasma {
     width: 100vw;
-    height: 11vh;
+    height: 11%;
     margin-bottom: 200px;
 }
 
@@ -96,6 +98,7 @@ body {
     font-weight: 500;
     text-decoration: underline;
 }
+
 /* #endregion */
 
 /* #region Página Inicial */
@@ -161,7 +164,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;  
+    width: 100%;
     margin-bottom: 100px;
     margin-top: 100px;
 }
@@ -216,14 +219,15 @@ body {
 }
 
 .chamada button:hover {
-    background-color: white;
-    transform: scale(110%, 110%);
+    background-color: aliceblue;
+    transform: scale(105%, 105%);
 }
 
 hr {
     margin-top: 150px;
     margin-bottom: 150px;
 }
+
 /* #endregion */
 
 /* #region Footer */
@@ -233,6 +237,7 @@ hr {
     justify-content: center;
     margin-top: 20vh;
     width: 100%;
+    height: 9%;
 }
 
 .contato {
@@ -255,13 +260,14 @@ hr {
     height: 100%;
 }
 
-.contato .conteudo  {
+.contato .conteudo {
     width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 /* #endregion */
 
 /* #region SobreMim */
@@ -294,6 +300,42 @@ hr {
 .sobremim .desc-img span {
     font-style: italic;
 }
+
+.Rede-social {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+
+.sobremim button {
+    width: 10%;
+    height: 10%;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.sobremim .github:hover {
+    background-color: #ff9100;
+}
+
+.sobremim .linkedin:hover {
+    background-color: #0a6bfd;
+}
+
+.icone:hover {
+    filter: brightness(0%);
+}
+
+.icone {
+    width: 100%;
+    height: 100%;
+}
 /* #endregion */
 
 /* #region Cadastro/Login */
@@ -303,7 +345,7 @@ hr {
     display: flex;
     justify-content: center;
 }
- 
+
 .formulario-cadastro {
     display: flex;
     flex-direction: row;
@@ -384,7 +426,7 @@ hr {
     border-left: #1e1f24 1px solid;
 }
 
-.login-img{
+.login-img {
     font-size: large;
     display: flex;
     justify-content: center;
