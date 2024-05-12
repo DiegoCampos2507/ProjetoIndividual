@@ -38,17 +38,18 @@ body {
 
 .header {
     border-bottom: 2px solid #b59d30;
+    border-top: 1px solid #b59d30;
     backdrop-filter: blur(15px);
     width: 100vw;
-    height: 11%;
     height: fit-content;
     position: fixed;
     z-index: 999;
+    border-radius: 0 0 17% 17%;
 }
 
 .fantasma {
     width: 100vw;
-    height: 11%;
+    height: 6%;
     margin-bottom: 200px;
 }
 
@@ -112,6 +113,7 @@ body {
     margin-top: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 50px;
     background: linear-gradient(90deg, #1e1f24 0%, #b59d30 45%, #8c7729 100%);
     background-clip: text;
@@ -121,6 +123,14 @@ body {
 
 .main-title h1 {
     font-weight: 500;
+    margin-bottom: 0;
+}
+
+.main-title p {
+    font-size: 0.6em;
+    -webkit-text-fill-color: aliceblue;
+    color: aliceblue;
+    margin: 0;
 }
 
 .desc-img {
@@ -211,16 +221,16 @@ body {
     border: black 2px solid;
     border-radius: 45px;
     color: black;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    width: 325px;
-    height: 100px;
+    width: 225px;
+    height: 50px;
     cursor: pointer;
 }
 
 .chamada button:hover {
     background-color: aliceblue;
-    transform: scale(105%, 105%);
+    transform: scale(103%, 103%);
 }
 
 hr {
@@ -237,7 +247,7 @@ hr {
     justify-content: center;
     margin-top: 20vh;
     width: 100%;
-    height: 9%;
+    height: 15%;
 }
 
 .contato {
@@ -307,6 +317,10 @@ hr {
     gap: 2%;
 }
 
+.sobremim h2 {
+    font-size: large;
+}
+
 .sobremim button {
     width: 10%;
     height: 10%;
@@ -352,8 +366,8 @@ hr {
     align-items: center;
     background-color: rgb(255, 255, 255);
     color: black;
-    height: 110%;
-    width: 35vw;
+    height: 75vh;
+    width: 40vw;
     padding: 15px 25px;
     border-radius: 15px;
     border: #b59d30 2px solid;
@@ -365,11 +379,12 @@ hr {
     align-items: center;
     background-color: rgb(255, 255, 255);
     color: black;
-    height: 37vh;
-    width: 35vw;
+    height: 54vh;
+    width: 40vw;
     padding: 15px 25px;
     border-radius: 15px;
     border: #b59d30 2px solid;
+    overflow: hidden;
 }
 
 .formulario button {
