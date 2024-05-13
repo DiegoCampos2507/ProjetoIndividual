@@ -52,10 +52,6 @@
                             <input type="text" placeholder="Digite seu sobrenome" id="inp_sobrenome">
                         </div>
                         <div class="campo">
-                            <p>Data de Nascimento:</p>
-                            <input type="text" placeholder="Digite sua data de nascimento" id="inp_nasc">
-                        </div>
-                        <div class="campo">
                             <p>Email:</p>
                             <input type="text" placeholder="Digite seu email" id="inp_email">
                         </div>
@@ -67,7 +63,11 @@
                             <p>Confirme sua senha:</p>
                             <input type="password" placeholder="Confirme sua senha" id="inp_confirmacao">
                         </div>
-                        <div id="mensagem_erro" style="color: brown;"></div>
+                        <div class="campo">
+                            <p>Data de Nascimento:</p>
+                            <input type="date" placeholder="Digite sua data de nascimento" id="inp_nasc">
+                        </div>
+                        <div class="mensagem_erro" id="mensagem_erro"></div>
                         <button onclick="cadastrar()">Cadastrar</button>
                     </div>
                     <div class="cadastro-img">
@@ -98,6 +98,13 @@
 </html>
 
 <script>
+    function erro() {
+        mensagem_erro.style.display = "block"
+            setTimeout(function () {
+                mensagem_erro.style.display = "none";
+            }, 5000)
+    }
+
     function cadastrar() {
         var nomeVar = inp_nome.value;
         var sobrenomeVar = inp_sobrenome.value;
@@ -107,10 +114,24 @@
         var confirmacaoVar = inp_confirmacao.value;
 
         if (nomeVar == "" || sobrenomeVar == "" || nascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar == "") {
-            mensagem_erro.innerHTML = `Todos os campos devem ser preenchidos`
+            mensagem_erro.innerHTML = `<h1>Erro!</h1>Todos os campos devem ser preenchidos`;
+            erro();
+        } else if (nomeVar.length < 2) {
+            mensagem_erro.innerHTML = `<h1>Erro!</h1>Nome inválido: Muito curto`;
+            erro();
+        } else if (emailVar.indexOf("@") < 2 || emailVar.indexOf(".") < 4) {
+            mensagem_erro.innerHTML = `<h1>Erro!</h1>Digite um email válido`;
+            erro();
+        } else if (senhaVar.length < 8) {
+            mensagem_erro.innerHTML = `<h1>Erro!</h1>Insira uma senha com pelo menos 8 carecteres`;
+            erro();
+        } else if (senhaVar.indexOf("!") <= 0|| senhaVar.indexOf("@") <= 0 || senhaVar.indexOf("#") <= 0 || senhaVar.indexOf("$") <= 0 || senhaVar.indexOf("&") <= 0 || senhaVar.indexOf("*") <= 0) {
+            mensagem_erro.innerHTML = `<h1>Erro!</h1>A senha deve conter um caractere especial`;
+            erro();
         } else if (senhaVar != confirmacaoVar) {
-            mensagem_erro.innerHTML = `A confirmação de senha falhou`
-        } else {
+            mensagem_erro.innerHTML = `<h1>Erro!</h1>A confirmação de senha falhou`;
+            erro();
+        }  else {
             fetch("/user/cadastrar", {
                 method: "POST",
                 headers: {

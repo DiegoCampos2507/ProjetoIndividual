@@ -38,7 +38,6 @@ body {
 
 .header {
     border-bottom: 2px solid #b59d30;
-    border-top: 1px solid #b59d30;
     backdrop-filter: blur(15px);
     width: 100vw;
     height: fit-content;
@@ -371,6 +370,17 @@ hr {
     padding: 15px 25px;
     border-radius: 15px;
     border: #b59d30 2px solid;
+}
+
+.mensagem_erro {
+    display: none;
+    right: 2%;
+    top: 30%;
+    position: absolute;
+    background-color: red;
+    color: aliceblue;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 .formulario-login {
