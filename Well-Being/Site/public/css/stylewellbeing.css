@@ -503,3 +503,28 @@ hr {
 }
 
 /* #endregion */
+
+/* #region Perfil */
+.background-perfil {
+    height: 98vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil {
+    background-color: #b59d30;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 90%;
+    border-radius: 15px;
+}
+
+.pessoal {
+    border-right: #fff;
+    height: 100%;
+    width: 30%;
+}
+/* #endregion */
