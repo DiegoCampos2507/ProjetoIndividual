@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Being | Perfil</title>
+    <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/stylewellbeing.css">
+</head>
+
+<body>
+    <div class="background-perfil">
+        <div class="perfil">
+            <div class="pessoal">
+                <img src="assets/images/logoSimples.png" alt="">
+                <h3>Olá, <b><span id="b_usuario">usuario</span></b>!</h3>
+                
+                <label for="anonimo">Perfil anônimo<input onclick="verificar()" type="checkbox" id="inp_anonimo" name="anonimo"></label>
+                <a href="Protótipo_WellBeing.pdf">Termos de Uso</a>
+            </div>
+            <div class="notificacao">
+                <span>Você está participando atualmente de <b><span id="b_grupos">0</span></b> comunidades.</span>
+                <div class="alertas"><label for="alertas">Notificações</label></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_grupos.innerHTML = sessionStorage.GRUPOS_USUARIO;
+
+    function verificar() {
+        
+        if (inp_anonimo.checked) {
+            b_usuario.innerHTML = "Anônimo(a)"
+        } else {
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        }
+    }
+</script>

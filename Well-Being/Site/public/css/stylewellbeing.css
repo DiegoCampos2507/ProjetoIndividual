@@ -517,14 +517,48 @@ hr {
     background-color: #b59d30;
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 70%;
     height: 90%;
     border-radius: 15px;
+    padding: 5px;
 }
 
 .pessoal {
-    border-right: #fff;
+    border-right: #fff 2px solid;
     height: 100%;
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.5em;
+}
+
+.pessoal a {
+    color: #1e1f24;
+    margin: 5px;
+    align-self: flex-start;
+    font-size: 0.7em;
+}
+
+.notificacao {
+    background-color: rgb(252, 250, 239);
+    width: 70%;
+    height: 100%;
+    border-radius: 0 15px 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.alertas {
+    background-color: lightgrey;
+    height: 50%;
+    width: 75%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 /* #endregion */

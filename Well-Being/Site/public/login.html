@@ -113,20 +113,17 @@
                 resultadoAutenticar.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.SENHA_USUARIO = json.senha;    
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.GRUPOS_USUARIO = json.grupos;
                 });
                 setTimeout(function () {
-                    window.location = "dashboard.html";
+                    window.location = "perfil.html";
                 }, 1000); // apenas para exibir o loading
 
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
             }
 
         }).catch(function (erro) {
