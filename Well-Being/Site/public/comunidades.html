@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Well Being | Início</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/stylewellbeing.css">
+  <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="background">
+    <div class="header">
+      <div class="container-comunidade">
+        <div class="logo">
+          <button onclick="sair()">
+            <img src="assets/images/logoExtendida.png" alt="Logo extensa">
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="mensagem_sair" class="mensagem-sair">
+    <button class="fechar" onclick="fechar()">X</button>
+    <span>
+      Você tem certeza que deseja sair? <br>
+      Atenção, você será deslogado do sistema
+    </span>
+    <button class="home" onclick="home()">Sair</button>
+  </div>
+</body>
+
+<script>
+  function sair() {
+    mensagem_sair.style.display = "Flex";
+  }
+
+  function fechar() {
+    mensagem_sair.style.display = "None";
+  }
+
+  function home() {
+    window.location.href = "index.html";
+  }
+</script>

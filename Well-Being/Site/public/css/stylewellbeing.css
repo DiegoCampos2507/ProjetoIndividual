@@ -562,3 +562,53 @@ hr {
     align-items: center;
 }
 /* #endregion */
+
+/* #region Perfil */
+.container-comunidade {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-comunidade button {
+    background-color: transparent;
+    border: transparent;
+    width: fit-content;
+    height: fit-content;
+}
+
+.mensagem-sair {
+    background-color: #b59d30;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    margin: 0 auto;
+    font-size: large;
+    
+    padding: 5px;
+    
+    display: none;
+    flex-direction: column;
+}
+
+.fechar {
+    width: fit-content;
+    background-color: transparent;
+    width: fit-content;
+    border: transparent;
+    align-self: flex-end;
+    border: #1e1f24 1px solid;
+    border-radius: 15px;
+    background-color: aliceblue;
+}
+
+.home {
+    background-color: aliceblue;
+    border-radius: 15px;
+    width: fit-content;
+    align-self: center;
+    margin: 5px;
+    font-size: medium;
+    border: 1px solid #1e1f24;
+}
+/* #endregion */
