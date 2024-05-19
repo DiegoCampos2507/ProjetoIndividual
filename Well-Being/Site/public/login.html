@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/stylewellbeing.css">
 </head>
 
-<body>
+<body class="body-sobre">
     <div class="background">
         <div class="header">
             <div class="container">
@@ -56,6 +56,7 @@
                                 <input type="password" placeholder="Digite sua senha" id="inp_senha">
                             </div>
                             <div id="mensagem_erro" style="color: brown;"></div>
+                            <div id="mensagem_sucesso" class="mensagem_sucesso"></div>
                             <button onclick="entrar()">Entrar</button>
                         </div>
                     </div>
@@ -115,10 +116,31 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.GRUPOS_USUARIO = json.grupos;
-                });
-                setTimeout(function () {
-                    window.location = "perfil.html";
-                }, 1000); // apenas para exibir o loading
+                    sessionStorage.ID_USUARIO = json.id;
+                })
+
+                    .then(function () {
+                        if (sessionStorage.GRUPOS_USUARIO == 0) {
+                            mensagem_sucesso.innerHTML =
+                                `Login realizado com sucesso! Redirecionando para tela de comunidades...
+                            <img src="assets/images/loading-gif.gif" alt="" width="30px" height="30px">`;
+                            mensagem_sucesso.style.display = "block";
+                            setTimeout(function () {
+                                mensagem_sucesso.style.display = "none";
+                                window.location = "comunidades.html";
+                            }, 2000);
+                        } else {
+                            mensagem_sucesso.innerHTML =
+                                `Login realizado com sucesso! Redirecionando para tela de perfil...
+                            <img src="assets/images/loading-gif.gif" alt="" width="30px" height="30px">`;
+                            mensagem_sucesso.style.display = "block";
+                            setTimeout(function () {
+                                mensagem_sucesso.style.display = "none";
+                                window.location = "perfil.html";
+                            }, 2000);
+                        }
+                    })
+
 
             } else {
 

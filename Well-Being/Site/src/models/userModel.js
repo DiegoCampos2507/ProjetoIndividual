@@ -7,7 +7,7 @@ function autenticar(email, senha) {
     senha
   );
   var instrucaoSql = `
-  SELECT email, senha, usuario.nome, count(fkUsuario) AS grupos FROM usuario JOIN GrupoUsuario ON fkUsuario = idUsuario WHERE email = '${email}' AND senha = '${senha}' GROUP BY fkUsuario;
+  SELECT idUsuario, email, senha, usuario.nome, count(fkUsuario) AS grupos FROM usuario LEFT JOIN GrupoUsuario ON fkUsuario = idUsuario WHERE email = '${email}' AND senha = '${senha}' GROUP BY fkUsuario, nome, idUsuario;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -21,7 +21,16 @@ function cadastrar(nome, sobrenome, nasc, email, senha) {
   return database.executar(instrucao);
 }
 
+function visualizar(id) {
+  console.log(`${id}`);
+  var instrucao = `
+  SELECT * FROM postagem JOIN usuario ON idUsuario = fkUsuario WHERE idUsuario = '${id}'`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   cadastrar,
   autenticar,
+  visualizar
 };

@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="css/stylewellbeing.css">
 </head>
 
-<body>
+<body onload="postagem()">
     <div class="background-perfil">
         <div class="perfil">
             <div class="pessoal">
+                <a href="comunidades.html"><- Ver comunidades</a>
                 <img src="assets/images/logoSimples.png" alt="">
                 <h3>Olá, <b><span id="b_usuario">usuario</span></b>!</h3>
                 
@@ -21,7 +22,8 @@
             </div>
             <div class="notificacao">
                 <span>Você está participando atualmente de <b><span id="b_grupos">0</span></b> comunidades.</span>
-                <div class="alertas"><label for="alertas">Notificações</label></div>
+                <div class="alertas"><h3 for="alertas">Suas Postagens</h3>
+                <span id="div_post"></span></div>
             </div>
         </div>
     </div>
@@ -38,5 +40,45 @@
         } else {
             b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
         }
+    }
+
+    function postagem() {
+
+        fetch("/user/visualizar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idServer: sessionStorage.ID_USUARIO,
+            })
+        }).then(function (resultadoAutenticar) {
+
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resultadoAutenticar.ok) {
+
+                resultadoAutenticar.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.TEXTO_POST = json.texto;
+                })
+
+                    .then(function () {
+                        div_post.innerHTML = `${sessionStorage.TEXTO_POST}`
+                    })
+
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
 </script>

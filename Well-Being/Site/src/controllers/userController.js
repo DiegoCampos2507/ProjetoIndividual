@@ -17,10 +17,13 @@ function autenticar(req, res) {
 
         if (resultadoAutenticar.length == 1) {
           console.log(resultadoAutenticar);
-          res.json({resultadoAutenticar, 
-            nome: resultadoAutenticar[0].nome, 
-            grupos: resultadoAutenticar[0].grupos });
-            
+          res.json({
+            resultadoAutenticar,
+            nome: resultadoAutenticar[0].nome,
+            grupos: resultadoAutenticar[0].grupos,
+            id: resultadoAutenticar[0].idUsuario
+          });
+
         } else if (resultadoAutenticar.length == 0) {
           res.status(403).send("Email e/ou senha inválido(s)");
         } else {
@@ -72,7 +75,23 @@ function cadastrar(req, res) {
     });
 }
 
+function visualizar(req, res) {
+  var id = req.body.idServer;
+
+  userModel.visualizar(id)
+    .then(function (resposta) {
+      res.json({
+        resposta,
+        texto: resposta[0].texto,
+        usuario: resposta[0].fkUsuario,
+        data: resposta[0].dtPost,
+        visualizada: resposta[0].fkVisuzalizada
+      });
+    })
+}
+
 module.exports = {
   autenticar,
   cadastrar,
+  visualizar
 };

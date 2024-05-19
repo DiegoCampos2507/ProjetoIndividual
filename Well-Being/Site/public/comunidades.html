@@ -22,18 +22,66 @@
         </div>
       </div>
     </div>
+    <div class="fantasma">
+    </div>
+    <div class="comunidades-title">
+      <h2>Comunidades ativas</h2>
+      <h5>Escolha a comunidade que você deseja acessar</h5>
+    </div>
+    <div class="comunidades">
+      <div class="linha">
+        <div onmouseover="ansiedade()" onmouseout="limpar()" class="card-comunidade">
+          <h4>Ansiedade</h4>
+          <div id="div_mensagemA"><button onclick="">Saiba Mais</button></div>
+        </div>
+        <div onmouseover="depressao()" onmouseout="limpar()" class="card-comunidade">
+          <h4>Depressão</h4>
+          <div id="div_mensagemB"><button onclick="">Saiba Mais</button></div>
+        </div>
+      </div>
+      <div class="linha">
+        <div onmouseover="TDAH()" onmouseout="limpar()" class="card-comunidade">
+          <h4>TDAH</h4>
+          <div id="div_mensagemTD"><button onclick="">Saiba Mais</button></div>
+        </div>
+        <div onmouseover="TOC()" onmouseout="limpar()" class="card-comunidade">
+          <h4>TOC</h4>
+          <div id="div_mensagemTO"><button onclick="">Saiba Mais</button></div>
+        </div>
+      </div>
+      <div class="linha">
+        <div onmouseover="TA()" onmouseout="limpar()" class="card-comunidade">
+          <h4>Transtorno Alimentar</h4>
+          <div id="div_mensagemTA"><button onclick="">Saiba Mais</button></div>
+        </div>
+        <div onmouseover="ALL()" onmouseout="limpar()" class="card-comunidade">
+          <h4>Outros</h4>
+          <div id="div_mensagemALL"><button onclick="">Saiba Mais</button></div>
+        </div>
+      </div>
+
+      <a href="perfil.html">Perfil</a>
+    </div>
   </div>
   <div id="mensagem_sair" class="mensagem-sair">
     <button class="fechar" onclick="fechar()">X</button>
     <span>
       Você tem certeza que deseja sair? <br>
-      Atenção, você será deslogado do sistema
+      Atenção! Você será deslogado do sistema
     </span>
     <button class="home" onclick="home()">Sair</button>
   </div>
 </body>
 
 <script>
+  div_mensagemA.style.display = `none`;
+  div_mensagemB.style.display = `none`;
+  div_mensagemTD.style.display = `none`;
+  div_mensagemTO.style.display = `none`;
+  div_mensagemTA.style.display = `none`;
+  div_mensagemALL.style.display = `none`;
+
+
   function sair() {
     mensagem_sair.style.display = "Flex";
   }
@@ -45,4 +93,39 @@
   function home() {
     window.location.href = "index.html";
   }
+
+  function ansiedade() {
+    div_mensagemA.style.display = `block`;
+  }
+
+  function depressao() {
+    div_mensagemB.style.display = `block`;
+  }
+
+  function TDAH() {
+    div_mensagemTD.style.display = `block`;
+  }
+
+  function TOC() {
+    div_mensagemTO.style.display = `block`;
+  }
+
+  function TA() {
+    div_mensagemTA.style.display = `block`;
+  }
+
+  function ALL() {
+    div_mensagemALL.style.display = `block`;
+  }
+
+  function limpar() {
+    div_mensagemA.style.display = `none`;
+    div_mensagemB.style.display = `none`;
+    div_mensagemTD.style.display = `none`;
+    div_mensagemTO.style.display = `none`;
+    div_mensagemTA.style.display = `none`;
+    div_mensagemALL.style.display = `none`;
+  }
+
+  
 </script>
