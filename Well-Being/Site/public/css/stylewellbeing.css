@@ -763,5 +763,6 @@ hr {
     border-radius: 10px;
     border: #fff 1px solid;
     box-shadow: 5px 5px 10px black;
+    cursor: pointer;
 }
 /* #endregion */

@@ -85,7 +85,7 @@ function visualizar(req, res) {
         texto: resposta[0].texto,
         usuario: resposta[0].fkUsuario,
         data: resposta[0].dtPost,
-        visualizada: resposta[0].fkVisuzalizada
+        visualizada: resposta[0].fkVisualizada
       });
     })
 }

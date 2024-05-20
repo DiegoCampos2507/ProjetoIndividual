@@ -27,7 +27,7 @@
       <a href="comunidades.html"><- Voltar para comunidades</a>
     </div>
     <div class="usuario">
-      <input type="text" placeholder="Sobre o que você quer falar?...">
+      <input id="inp_post" type="text" placeholder="Sobre o que você quer falar?...">
     </div>
     <div class="envio" >
       <button onclick="postar()">Postar</button>
@@ -61,6 +61,30 @@
 
   function home() {
     window.location.href = "index.html";
+  }
+
+  function postar() {
+    var postVar = inp_post.value;
+
+    fetch("/user/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    postServer: postVar
+                }),
+            })
+
+            .then(function(resposta) {
+              console.log("RESPOSTA: ", resposta);
+
+              if(resposta.ok) {
+                alert("Post realizado com sucesso")
+              } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+              }
+            } )
   }
 </script>
   
