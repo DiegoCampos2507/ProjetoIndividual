@@ -14,7 +14,7 @@ body {
     padding: 0;
     font-family: poppins, arial;
     background-color: #1e1f24;
-    height: 120vh;
+    height: 130vh;
     width: 100%;
     overflow-x: hidden;
 }
@@ -580,6 +580,7 @@ hr {
     width: 100%;
     display: flex;
     justify-content: center;
+    
 }
 
 .container-comunidade button {
@@ -655,6 +656,8 @@ hr {
 
 .comunidades-title h2 {
     margin-bottom: 0;
+    text-shadow: 5px 5px 10px black;
+
 }
 
 .linha{ 
@@ -680,8 +683,10 @@ hr {
 
     background-color: #caba69;
     border: 2px solid aliceblue;
+    box-shadow: 5px 5px 10px black;
 
 
+    transition: 1s;
 }
 
 .card-comunidade:hover {
@@ -702,5 +707,61 @@ hr {
     border: 1px solid #1e1f24;
     box-shadow: 0.1px 0.1px 3px black;
     cursor: pointer;
+}
+/* #endregion */
+
+/* #region Postagens */
+.titulo-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.titulo-post a {
+    color: aliceblue;
+    text-decoration: underline;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+.usuario {
+    background-color: #babab9;
+    width: 60%;
+    height: 20%;
+    border-radius: 15px;
+    border: 2px solid aliceblue;
+    box-shadow: 5px 5px 10px black;
+}
+
+.usuario input {
+    background-color: transparent;
+    border: transparent;
+    color: rgb(39, 39, 39);
+    width: 100%;
+    height: 100%;
+}
+
+.usuario input::placeholder {
+    color: rgb(39, 39, 39);
+    font-size: larger;
+}
+
+.envio {
+    display: flex;
+    width: 60%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.envio button {
+    color: rgb(247, 251, 255);
+    background-color: #a18b39;
+    margin-top: 3%;
+    height: 60%;
+    width: 20%;
+    border-radius: 10px;
+    border: #fff 1px solid;
+    box-shadow: 5px 5px 10px black;
 }
 /* #endregion */

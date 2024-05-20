@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Well Being | Início</title>
+  <title>Well Being | Comunidades</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/stylewellbeing.css">
   <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon">
@@ -32,31 +32,31 @@
       <div class="linha">
         <div onmouseover="ansiedade()" onmouseout="limpar()" class="card-comunidade">
           <h4>Ansiedade</h4>
-          <div id="div_mensagemA"><button onclick="">Saiba Mais</button></div>
+          <div id="div_mensagemA"><button onclick="direcaoA()">Saiba Mais</button></div>
         </div>
         <div onmouseover="depressao()" onmouseout="limpar()" class="card-comunidade">
           <h4>Depressão</h4>
-          <div id="div_mensagemB"><button onclick="">Saiba Mais</button></div>
+          <div id="div_mensagemB"><button onclick="direcaoD()">Saiba Mais</button></div>
         </div>
       </div>
       <div class="linha">
         <div onmouseover="TDAH()" onmouseout="limpar()" class="card-comunidade">
           <h4>TDAH</h4>
-          <div id="div_mensagemTD"><button onclick="">Saiba Mais</button></div>
+          <div id="div_mensagemTD"><button onclick="direcaoTD()">Saiba Mais</button></div>
         </div>
         <div onmouseover="TOC()" onmouseout="limpar()" class="card-comunidade">
           <h4>TOC</h4>
-          <div id="div_mensagemTO"><button onclick="">Saiba Mais</button></div>
+          <div id="div_mensagemTO"><button onclick="direcaoTO()">Saiba Mais</button></div>
         </div>
       </div>
       <div class="linha">
         <div onmouseover="TA()" onmouseout="limpar()" class="card-comunidade">
           <h4>Transtorno Alimentar</h4>
-          <div id="div_mensagemTA"><button onclick="">Saiba Mais</button></div>
+          <div id="div_mensagemTA"><button onclick="direcaoTA()">Saiba Mais</button></div>
         </div>
         <div onmouseover="ALL()" onmouseout="limpar()" class="card-comunidade">
           <h4>Outros</h4>
-          <div id="div_mensagemALL"><button onclick="">Saiba Mais</button></div>
+          <div id="div_mensagemALL"><button onclick="direcaoALL()">Saiba Mais</button></div>
         </div>
       </div>
 
@@ -127,5 +127,34 @@
     div_mensagemALL.style.display = `none`;
   }
 
-  
+  function direcaoA() {
+    sessionStorage.LOCAL = "Ansiedade";
+    window.location.href = "postagens.html";
+  }
+
+  function direcaoD() {
+    sessionStorage.LOCAL = "Depressão";
+    window.location.href = "postagens.html";
+  }
+
+  function direcaoTD() {
+    sessionStorage.LOCAL = "TDAH";
+    window.location.href = "postagens.html";
+  }
+
+  function direcaoTO() {
+    sessionStorage.LOCAL = "TOC";
+    window.location.href = "postagens.html";
+    
+  }
+
+  function direcaoTA() {
+    sessionStorage.LOCAL = "Transtorno Alimentar";
+    window.location.href = "postagens.html";
+  }
+
+  function direcaoALL() {
+    sessionStorage.LOCAL = "Outros";
+    window.location.href = "postagens.html";
+  }
 </script>
