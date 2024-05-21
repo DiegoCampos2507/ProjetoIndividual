@@ -14,16 +14,20 @@
         <div class="perfil">
             <div class="pessoal">
                 <a href="comunidades.html"><- Ver comunidades</a>
-                <img src="assets/images/logoSimples.png" alt="">
-                <h3>Olá, <b><span id="b_usuario">usuario</span></b>!</h3>
-                
-                <label for="anonimo">Perfil anônimo<input onclick="verificar()" type="checkbox" id="inp_anonimo" name="anonimo"></label>
-                <a href="Protótipo_WellBeing.pdf">Termos de Uso</a>
+                        <img src="assets/images/logoSimples.png" alt="">
+                        <h3>Olá, <b><span id="b_usuario">usuario</span></b>!</h3>
+
+                        <label for="anonimo">Perfil anônimo<input onclick="verificar()" type="checkbox" id="inp_anonimo"
+                                name="anonimo"></label>
+                        <a href="Protótipo_WellBeing.pdf">Termos de Uso</a>
             </div>
             <div class="notificacao">
                 <span>Você está participando atualmente de <b><span id="b_grupos">0</span></b> comunidades.</span>
-                <div class="alertas"><h3 for="alertas">Suas Postagens</h3>
-                <span id="div_post"></span></div>
+                <div class="alertas">
+                    <h3 for="alertas">Suas Postagens</h3>
+                    <div id="div_post"></div>
+                    <span></span>
+                </div>
             </div>
         </div>
     </div>
@@ -33,8 +37,9 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_grupos.innerHTML = sessionStorage.GRUPOS_USUARIO;
 
+
     function verificar() {
-        
+
         if (inp_anonimo.checked) {
             b_usuario.innerHTML = "Anônimo(a)"
         } else {
@@ -52,21 +57,29 @@
             body: JSON.stringify({
                 idServer: sessionStorage.ID_USUARIO,
             })
-        }).then(function (resultadoAutenticar) {
+        }).then(function (resposta) {
 
             console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resultadoAutenticar.ok) {
+            if (resposta.ok) {
 
-                resultadoAutenticar.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.TEXTO_POST = json.texto;
+                resposta.json().then(function (resultado) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+                    var feed = document.getElementById("div_post");
+
+                    for (var i = 0; i <= resultado.length; i++) {
+                        var publicacao = resultado[i];
+                        var divPublicacao = document.createElement("span");
+                        divPublicacao.innerHTML += "Post: " + publicacao.resposta + ".";
+                        divPublicacao.innerHTML += "Post: " + publicacao.texto + ".";
+                        divPublicacao.innerHTML += "Post: " + publicacao.usuario + ".";
+                        divPublicacao.innerHTML += "Post: " + publicacao.data + ".";
+                        divPublicacao.innerHTML += "Post: " + publicacao.visualizada + ".";
+                        feed.appendChild(divPublicacao);
+                    }
+
                 })
-
-                    .then(function () {
-                        div_post.innerHTML = `${sessionStorage.TEXTO_POST}`
-                    })
 
 
             } else {

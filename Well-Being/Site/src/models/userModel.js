@@ -24,7 +24,14 @@ function cadastrar(nome, sobrenome, nasc, email, senha) {
 function visualizar(id) {
   console.log(`${id}`);
   var instrucao = `
-  SELECT * FROM postagem JOIN usuario ON idUsuario = fkUsuario WHERE idUsuario = '${id}'`;
+  SELECT idPostagem, texto, fkUsuario, dtPost, fkVisualizada FROM postagem JOIN usuario ON idUsuario = fkUsuario WHERE idUsuario = '${id}'`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function postar(post, idUsuario) {
+  var instrucao = `
+  INSERT INTO postagem VALUES (default, ${idUsuario}, "${post}", default, null)`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
@@ -32,5 +39,6 @@ function visualizar(id) {
 module.exports = {
   cadastrar,
   autenticar,
-  visualizar
+  visualizar,
+  postar
 };

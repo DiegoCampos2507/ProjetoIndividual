@@ -82,7 +82,6 @@ function visualizar(req, res) {
     .then(function (resposta) {
       res.json({
         resposta,
-        texto: resposta[0].texto,
         usuario: resposta[0].fkUsuario,
         data: resposta[0].dtPost,
         visualizada: resposta[0].fkVisualizada
@@ -90,8 +89,22 @@ function visualizar(req, res) {
     })
 }
 
+function postar(req, res) {
+  var post = req.body.postServer;
+  var idUsuario = req.body.idUsuarioServer;
+
+  console.log("A");
+  userModel.postar(post, idUsuario)
+    .then(function (resposta) {
+      res.json({
+        resposta
+      });
+    })
+}
+
 module.exports = {
   autenticar,
   cadastrar,
-  visualizar
+  visualizar,
+  postar
 };

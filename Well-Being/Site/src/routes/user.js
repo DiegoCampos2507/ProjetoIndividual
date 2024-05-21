@@ -15,5 +15,9 @@ router.post("/visualizar", function (req, res) {
     userController.visualizar(req, res);
 });
 
+router.post("/postar", function (req, res) {
+    userController.postar(req, res);
+});
+
 router.post("/acessar")
 module.exports = router;
