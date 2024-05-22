@@ -19,6 +19,10 @@ body {
     overflow-x: hidden;
 }
 
+.pessoal a {
+    cursor: pointer;
+}
+
 .body-sobre{
     height: fit-content;
 }
@@ -573,6 +577,25 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+}
+
+.div_post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divPublicacao {
+    text-align: justify;
+    background-color: #e9e8e8;
+    border: #1e1f24 1px solid;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 /* #endregion */
 

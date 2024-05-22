@@ -24,14 +24,21 @@ function cadastrar(nome, sobrenome, nasc, email, senha) {
 function visualizar(id) {
   console.log(`${id}`);
   var instrucao = `
-  SELECT idPostagem, texto, fkUsuario, dtPost, fkVisualizada FROM postagem JOIN usuario ON idUsuario = fkUsuario WHERE idUsuario = '${id}'`;
+  SELECT idPostagem, texto, fkUsuario, dtPost, fkVisualizada, grupo.nome FROM postagem JOIN usuario ON idUsuario = fkUsuario JOIN grupo ON fkGrupo = idGrupo WHERE idUsuario = '${id}'`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
 
-function postar(post, idUsuario) {
+function postar(post, idUsuario, idGrupo) {
   var instrucao = `
-  INSERT INTO postagem VALUES (default, ${idUsuario}, "${post}", default, null)`;
+  INSERT INTO postagem VALUES (default, ${idUsuario}, "${post}", default, null, ${idGrupo})`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function acessar(comunidade) {
+  var instrucao = `
+  SELECT ifnull(idPostagem, "Nada"), texto, usuario.nome, dtPost FROM postagem JOIN usuario ON idUsuario = fkUsuario JOIN grupo ON fkGrupo = idGrupo WHERE idGrupo = '${comunidade}'`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
@@ -40,5 +47,6 @@ module.exports = {
   cadastrar,
   autenticar,
   visualizar,
-  postar
+  postar,
+  acessar
 };

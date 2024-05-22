@@ -82,9 +82,10 @@ function visualizar(req, res) {
     .then(function (resposta) {
       res.json({
         resposta,
-        usuario: resposta[0].fkUsuario,
-        data: resposta[0].dtPost,
-        visualizada: resposta[0].fkVisualizada
+        idPostagem: resposta[0].idPostagem, 
+        texto: resposta[0].texto,
+        dtPost : resposta[0].dtPost,
+        grupo: resposta[0].nome
       });
     })
 }
@@ -92,9 +93,9 @@ function visualizar(req, res) {
 function postar(req, res) {
   var post = req.body.postServer;
   var idUsuario = req.body.idUsuarioServer;
+  var idGrupo = req.body.idGrupoServer;
 
-  console.log("A");
-  userModel.postar(post, idUsuario)
+  userModel.postar(post, idUsuario, idGrupo)
     .then(function (resposta) {
       res.json({
         resposta
@@ -102,9 +103,25 @@ function postar(req, res) {
     })
 }
 
+function acessar(req, res) {
+  var comunidade = req.body.idGrupoServer;
+
+  userModel.acessar(comunidade)
+    .then(function(resposta) {
+      res.json({
+        resposta,
+        idPostagem: resposta[0].idPostagem, 
+        texto: resposta[0].texto,
+        dtPost : resposta[0].dtPost,
+        nome: resposta[0].nome
+      })
+    })
+}
+
 module.exports = {
   autenticar,
   cadastrar,
   visualizar,
-  postar
+  postar,
+  acessar
 };

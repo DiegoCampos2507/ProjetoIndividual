@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="acessar()">
   <div class="background">
     <div class="header">
       <div class="container-comunidade">
@@ -32,6 +32,8 @@
     <div class="envio">
       <button onclick="postar()">Postar</button>
     </div>
+    <div id="posts">
+    </div>
   </div>
   <div id="mensagem_sair" class="mensagem-sair">
     <button class="fechar" onclick="fechar()">X</button>
@@ -49,8 +51,366 @@
   titulo.innerHTML += `<h2>${local}</h2>`
 
   if (local == "Ansiedade") {
+    sessionStorage.IDGRUPO = 1;
+    function acessar() {
 
-  } else if (local) { }
+      fetch("/user/acessar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            var feed = document.getElementById("posts");
+
+            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              var publicacao = resposta.resposta[i];
+              var divPublicacao = document.createElement("div");
+              var spanTitulo = document.createElement("span");
+              var spanId = document.createElement("span");
+              var spanData = document.createElement("span");
+              var spanGrupo = document.createElement("span");
+              var data = new Date(publicacao.dtPost);
+              var dataFormat = data.toLocaleString('pt-BR');
+              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+
+              divPublicacao.className = "divPublicacao";
+              divPublicacao.appendChild(spanId);
+              divPublicacao.appendChild(spanGrupo);
+              divPublicacao.appendChild(spanTitulo);
+              divPublicacao.appendChild(spanData);
+              feed.appendChild(divPublicacao);
+            }
+
+          })
+
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  } else if (local == "Depressão") {
+    sessionStorage.IDGRUPO = 2;
+    function acessar() {
+
+      fetch("/user/acessar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            var feed = document.getElementById("posts");
+
+            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              var publicacao = resposta.resposta[i];
+              var divPublicacao = document.createElement("div");
+              var spanTitulo = document.createElement("span");
+              var spanId = document.createElement("span");
+              var spanData = document.createElement("span");
+              var spanGrupo = document.createElement("span");
+              var data = new Date(publicacao.dtPost);
+              var dataFormat = data.toLocaleString('pt-BR');
+              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+
+              divPublicacao.className = "divPublicacao";
+              divPublicacao.appendChild(spanId);
+              divPublicacao.appendChild(spanGrupo);
+              divPublicacao.appendChild(spanTitulo);
+              divPublicacao.appendChild(spanData);
+              feed.appendChild(divPublicacao);
+            }
+
+          })
+
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  } else if (local == "TDAH") {
+    sessionStorage.IDGRUPO = 3;
+    function acessar() {
+
+      fetch("/user/acessar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            var feed = document.getElementById("posts");
+
+            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              var publicacao = resposta.resposta[i];
+              var divPublicacao = document.createElement("div");
+              var spanTitulo = document.createElement("span");
+              var spanId = document.createElement("span");
+              var spanData = document.createElement("span");
+              var spanGrupo = document.createElement("span");
+              var data = new Date(publicacao.dtPost);
+              var dataFormat = data.toLocaleString('pt-BR');
+              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+
+              divPublicacao.className = "divPublicacao";
+              divPublicacao.appendChild(spanId);
+              divPublicacao.appendChild(spanGrupo);
+              divPublicacao.appendChild(spanTitulo);
+              divPublicacao.appendChild(spanData);
+              feed.appendChild(divPublicacao);
+            }
+
+          })
+
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  } else if (local == "TOC") {
+    sessionStorage.IDGRUPO = 5;
+    function acessar() {
+
+      fetch("/user/acessar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            var feed = document.getElementById("posts");
+
+            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              var publicacao = resposta.resposta[i];
+              var divPublicacao = document.createElement("div");
+              var spanTitulo = document.createElement("span");
+              var spanId = document.createElement("span");
+              var spanData = document.createElement("span");
+              var spanGrupo = document.createElement("span");
+              var data = new Date(publicacao.dtPost);
+              var dataFormat = data.toLocaleString('pt-BR');
+              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+
+              divPublicacao.className = "divPublicacao";
+              divPublicacao.appendChild(spanId);
+              divPublicacao.appendChild(spanGrupo);
+              divPublicacao.appendChild(spanTitulo);
+              divPublicacao.appendChild(spanData);
+              feed.appendChild(divPublicacao);
+            }
+
+          })
+
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  } else if (local == "Transtorno Alimentar") {
+    sessionStorage.IDGRUPO = 4;
+    function acessar() {
+
+      fetch("/user/acessar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            var feed = document.getElementById("posts");
+
+            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              var publicacao = resposta.resposta[i];
+              var divPublicacao = document.createElement("div");
+              var spanTitulo = document.createElement("span");
+              var spanId = document.createElement("span");
+              var spanData = document.createElement("span");
+              var spanGrupo = document.createElement("span");
+              var data = new Date(publicacao.dtPost);
+              var dataFormat = data.toLocaleString('pt-BR');
+              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+
+              divPublicacao.className = "divPublicacao";
+              divPublicacao.appendChild(spanId);
+              divPublicacao.appendChild(spanGrupo);
+              divPublicacao.appendChild(spanTitulo);
+              divPublicacao.appendChild(spanData);
+              feed.appendChild(divPublicacao);
+            }
+
+          })
+
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  } else if (local == "Outros") {
+    sessionStorage.IDGRUPO = 6;
+    function acessar() {
+
+      fetch("/user/acessar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            var feed = document.getElementById("posts");
+
+            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              var publicacao = resposta.resposta[i];
+              var divPublicacao = document.createElement("div");
+              var spanTitulo = document.createElement("span");
+              var spanId = document.createElement("span");
+              var spanData = document.createElement("span");
+              var spanGrupo = document.createElement("span");
+              var data = new Date(publicacao.dtPost);
+              var dataFormat = data.toLocaleString('pt-BR');
+              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+
+              divPublicacao.className = "divPublicacao";
+              divPublicacao.appendChild(spanId);
+              divPublicacao.appendChild(spanGrupo);
+              divPublicacao.appendChild(spanTitulo);
+              divPublicacao.appendChild(spanData);
+              feed.appendChild(divPublicacao);
+            }
+
+          })
+
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  }
 
   function sair() {
     mensagem_sair.style.display = "Flex";
@@ -66,7 +426,7 @@
 
   function postar() {
     var postVar = inp_post.value;
-    var idUsuarioVar = sessionStorage.ID_USUARIO
+    var idUsuarioVar = sessionStorage.ID_USUARIO;
 
     fetch("/user/postar", {
       method: "POST",
@@ -75,7 +435,8 @@
       },
       body: JSON.stringify({
         postServer: postVar,
-        idUsuarioServer: idUsuarioVar
+        idUsuarioServer: idUsuarioVar,
+        idGrupoServer: sessionStorage.IDGRUPO,
       }),
     })
       .then(function (resposta) {
@@ -83,6 +444,7 @@
 
         if (resposta.ok) {
           alert("Post realizado com sucesso");
+          window.location.reload(true);
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";

@@ -19,5 +19,9 @@ router.post("/postar", function (req, res) {
     userController.postar(req, res);
 });
 
+router.post("/acessar", function (req, res) {
+    userController.acessar(req,res);
+});
+
 router.post("/acessar")
 module.exports = router;
