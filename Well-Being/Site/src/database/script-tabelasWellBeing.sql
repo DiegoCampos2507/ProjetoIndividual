@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS WellBeing;
 CREATE DATABASE WellBeing;
 
 USE WellBeing;
@@ -39,7 +40,9 @@ CONSTRAINT pkPostagem PRIMARY KEY (idPostagem, fkUsuario),
 texto VARCHAR(90),
 dtPost DATETIME,
 fkVisualizada INT, 
-CONSTRAINT fkVizualizadaPostagem FOREIGN KEY (fkVisualizada) REFERENCES visualizadas(idVisualizadas)
+CONSTRAINT fkVizualizadaPostagem FOREIGN KEY (fkVisualizada) REFERENCES visualizadas(idVisualizadas),
+fkGrupo iNT,
+CONSTRAINT fkGrupoPost FOREIGN KEY (fkGrupo) REFERENCES grupo(idGrupo)
 );
 
 INSERT INTO grupo VALUES 
@@ -50,17 +53,21 @@ INSERT INTO grupo VALUES
 (default, "TOC"),
 (default, "Outras");
 
+INSERT INTO usuario VALUES (default, "Diego", "Campos", "2005-07-25","diego@gmail.com", "12345678");
+
 INSERT INTO postagem VALUES (
 default,
-2,
+1,
 'Isso é um teste2',
 '2024-05-18 23:20:00',
-null
+null,
+6
 );
 
-INSERT INTO GrupoUsuario VALUES (default, 1, 1);
+SELECT * FROM GrupoUsuario;
+
+INSERT INTO GrupoUsuario VALUES (default, 2, 1);
 
 SELECT * FROM usuario LEFT JOIN GrupoUsuario ON fkUsuario = idUsuario;
-
 
 SELECT email, senha, usuario.nome, count(fkUsuario) FROM usuario JOIN GrupoUsuario ON fkUsuario = idUsuario WHERE email = 'diego@gmail.com' AND senha = '12345678' GROUP BY fkUsuario;
