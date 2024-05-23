@@ -82,9 +82,9 @@ function visualizar(req, res) {
     .then(function (resposta) {
       res.json({
         resposta,
-        idPostagem: resposta[0].idPostagem, 
+        idPostagem: resposta[0].idPostagem,
         texto: resposta[0].texto,
-        dtPost : resposta[0].dtPost,
+        dtPost: resposta[0].dtPost,
         grupo: resposta[0].nome
       });
     })
@@ -107,21 +107,48 @@ function acessar(req, res) {
   var comunidade = req.body.idGrupoServer;
 
   userModel.acessar(comunidade)
-    .then(function(resposta) {
+    .then(function (resposta) {
       res.json({
         resposta,
-        idPostagem: resposta[0].idPostagem, 
+        idPostagem: resposta[0].idPostagem,
         texto: resposta[0].texto,
-        dtPost : resposta[0].dtPost,
+        dtPost: resposta[0].dtPost,
         nome: resposta[0].nome
       })
     })
 }
+
+function participar(req, res) {
+  var idGrupo = req.body.idGrupoServer;
+  var idUsuario = req.body.idUsuarioServer;
+
+  userModel.participar(idGrupo, idUsuario)
+    .then(function(resposta) {
+      res.json({
+        resposta
+      })
+    })
+};
+
+function remover(req, res) {
+  var idGrupo = req.body.idGrupoServer;
+  var idUsuario = req.body.idUsuarioServer;
+
+  userModel.remover(idGrupo, idUsuario)
+    .then(function(resposta) {
+      res.json({
+        resposta
+      })
+    })
+};
+
 
 module.exports = {
   autenticar,
   cadastrar,
   visualizar,
   postar,
-  acessar
+  acessar,
+  participar,
+  remover
 };

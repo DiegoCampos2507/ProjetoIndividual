@@ -1,3 +1,4 @@
+const { deletar } = require("../controllers/userController");
 var database = require("../database/config");
 
 function autenticar(email, senha) {
@@ -38,7 +39,21 @@ function postar(post, idUsuario, idGrupo) {
 
 function acessar(comunidade) {
   var instrucao = `
-  SELECT ifnull(idPostagem, "Nada"), texto, usuario.nome, dtPost FROM postagem JOIN usuario ON idUsuario = fkUsuario JOIN grupo ON fkGrupo = idGrupo WHERE idGrupo = '${comunidade}'`;
+  SELECT idPostagem, texto, usuario.nome, dtPost FROM postagem JOIN usuario ON idUsuario = fkUsuario JOIN grupo ON fkGrupo = idGrupo WHERE idGrupo = '${comunidade}'`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function participar(idGrupo, idUsuario) {
+  var instrucao = `
+  INSERT INTO GrupoUsuario VALUES (default, ${idGrupo}, ${idUsuario});`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function remover(idGrupo, idUsuario) {
+  var instrucao = `
+  DELETE FROM GrupoUsuario WHERE fkGrupo = ${idGrupo} AND fkUsuario = ${idUsuario};`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
@@ -48,5 +63,7 @@ module.exports = {
   autenticar,
   visualizar,
   postar,
-  acessar
+  acessar,
+  participar,
+  remover
 };

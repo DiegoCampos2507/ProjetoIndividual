@@ -20,7 +20,15 @@ router.post("/postar", function (req, res) {
 });
 
 router.post("/acessar", function (req, res) {
-    userController.acessar(req,res);
+    userController.acessar(req, res);
+});
+
+router.post("/participar", function (req, res) {
+    userController.participar(req, res);
+});
+
+router.post("/remover", function(req, res) {
+    userController.remover(req, res);
 });
 
 router.post("/acessar")

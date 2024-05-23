@@ -22,9 +22,9 @@
                         <a href="Protótipo_WellBeing.pdf">Termos de Uso</a>
             </div>
             <div class="notificacao">
-                <span>Você está participando atualmente de <b><span id="b_grupos">0</span></b> comunidades.</span>
+                <span>Você está participando atualmente de <b><span id="b_grupos">0</span></b> comunidade(s).</span>
+                <h3 for="alertas">Suas Postagens:</h3>
                 <div class="alertas">
-                    <h3 for="alertas">Suas Postagens</h3>
                     <div id="div_post" class="div_post"></div>
                 </div>
             </div>
@@ -36,12 +36,15 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_grupos.innerHTML = sessionStorage.GRUPOS_USUARIO;
 
-
     function verificar() {
+
         if (inp_anonimo.checked) {
-            b_usuario.innerHTML = "Anônimo(a)"
+            b_usuario.innerHTML = "Anônimo(a)";
+            sessionStorage.NICKNAME = "Anônimo(a)" + Math.random();
+
         } else {
             b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+            sessionStorage.NICKNAME = sessionStorage.NOME_USUARIO;
         }
     }
 
@@ -66,7 +69,7 @@
 
                     var feed = document.getElementById("div_post");
 
-                    for (var i = resposta.resposta.length-1; i >= 0; i--) {
+                    for (var i = resposta.resposta.length - 1; i >= 0; i--) {
                         var publicacao = resposta.resposta[i];
                         var divPublicacao = document.createElement("div");
                         var spanTitulo = document.createElement("span");
@@ -75,12 +78,16 @@
                         var spanGrupo = document.createElement("span");
                         var data = new Date(publicacao.dtPost);
                         var dataFormat = data.toLocaleString('pt-BR');
-                        spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+                        spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
                         spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
-                        spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-                        spanGrupo.innerHTML += "Comunidade: " + publicacao.nome;
-                        
+                        spanData.innerHTML += "Data de postagem: <b>" + dataFormat + "</b>.";
+                        spanGrupo.innerHTML += "Comunidade: <b>" + publicacao.nome + "</b>";
+
                         divPublicacao.className = "divPublicacao";
+                        spanId.className = "subdescricao";
+                        spanGrupo.className = "subdescricao";
+                        spanData.className = "descricao";
+                        spanData.className = "descricao";
                         divPublicacao.appendChild(spanId);
                         divPublicacao.appendChild(spanGrupo);
                         divPublicacao.appendChild(spanTitulo);

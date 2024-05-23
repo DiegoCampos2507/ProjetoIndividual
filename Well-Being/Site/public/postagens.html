@@ -25,14 +25,18 @@
     </div>
     <div id="titulo" class="titulo-post" style="color: aliceblue;">
       <a href="comunidades.html"><- Voltar para comunidades</a>
+          <div class="participar">
+            <input onclick="participar()" type="checkbox" id="inp_participar" class="participar-checkbox">
+            <label for="participar">Participar</label>
+          </div>
     </div>
     <div class="usuario">
-      <input id="inp_post" type="text" placeholder="Sobre o que você quer falar?...">
+      <input id="inp_post" maxlength="1000" type="text" placeholder="Sobre o que você quer falar?...">
     </div>
     <div class="envio">
       <button onclick="postar()">Postar</button>
     </div>
-    <div id="posts">
+    <div class="posts" id="posts">
     </div>
   </div>
   <div id="mensagem_sair" class="mensagem-sair">
@@ -82,12 +86,15 @@
               var spanGrupo = document.createElement("span");
               var data = new Date(publicacao.dtPost);
               var dataFormat = data.toLocaleString('pt-BR');
-              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
               spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+              spanGrupo.innerHTML += "Feita por: " + sessionStorage.NICKNAME;
 
               divPublicacao.className = "divPublicacao";
+              spanId.className = "subdescricao";
+              spanGrupo.className = "subdescricao";
+              spanData.className = "descricao";
               divPublicacao.appendChild(spanId);
               divPublicacao.appendChild(spanGrupo);
               divPublicacao.appendChild(spanTitulo);
@@ -142,12 +149,15 @@
               var spanGrupo = document.createElement("span");
               var data = new Date(publicacao.dtPost);
               var dataFormat = data.toLocaleString('pt-BR');
-              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
               spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+              spanGrupo.innerHTML += "Feita por: " + sessionStorage.NICKNAME;
 
               divPublicacao.className = "divPublicacao";
+              spanId.className = "subdescricao";
+              spanGrupo.className = "subdescricao";
+              spanData.className = "descricao";
               divPublicacao.appendChild(spanId);
               divPublicacao.appendChild(spanGrupo);
               divPublicacao.appendChild(spanTitulo);
@@ -202,12 +212,15 @@
               var spanGrupo = document.createElement("span");
               var data = new Date(publicacao.dtPost);
               var dataFormat = data.toLocaleString('pt-BR');
-              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
               spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+              spanGrupo.innerHTML += "Feita por: " + sessionStorage.NICKNAME;
 
               divPublicacao.className = "divPublicacao";
+              spanId.className = "subdescricao";
+              spanGrupo.className = "subdescricao";
+              spanData.className = "descricao";
               divPublicacao.appendChild(spanId);
               divPublicacao.appendChild(spanGrupo);
               divPublicacao.appendChild(spanTitulo);
@@ -262,12 +275,15 @@
               var spanGrupo = document.createElement("span");
               var data = new Date(publicacao.dtPost);
               var dataFormat = data.toLocaleString('pt-BR');
-              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
               spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+              spanGrupo.innerHTML += "Feita por: " + sessionStorage.NICKNAME;
 
               divPublicacao.className = "divPublicacao";
+              spanId.className = "subdescricao";
+              spanGrupo.className = "subdescricao";
+              spanData.className = "descricao";
               divPublicacao.appendChild(spanId);
               divPublicacao.appendChild(spanGrupo);
               divPublicacao.appendChild(spanTitulo);
@@ -322,12 +338,15 @@
               var spanGrupo = document.createElement("span");
               var data = new Date(publicacao.dtPost);
               var dataFormat = data.toLocaleString('pt-BR');
-              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
               spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+              spanGrupo.innerHTML += "Feita por: " + sessionStorage.NICKNAME;
 
               divPublicacao.className = "divPublicacao";
+              spanId.className = "subdescricao";
+              spanGrupo.className = "subdescricao";
+              spanData.className = "descricao";
               divPublicacao.appendChild(spanId);
               divPublicacao.appendChild(spanGrupo);
               divPublicacao.appendChild(spanTitulo);
@@ -382,12 +401,15 @@
               var spanGrupo = document.createElement("span");
               var data = new Date(publicacao.dtPost);
               var dataFormat = data.toLocaleString('pt-BR');
-              spanTitulo.innerHTML += "Publicação: '" + publicacao.texto + "'.";
+              spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
               spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML += "Feita por: " + publicacao.nome;
+              spanGrupo.innerHTML += "Feita por: " + sessionStorage.NICKNAME;
 
               divPublicacao.className = "divPublicacao";
+              spanId.className = "subdescricao";
+              spanGrupo.className = "subdescricao";
+              spanData.className = "descricao";
               divPublicacao.appendChild(spanId);
               divPublicacao.appendChild(spanGrupo);
               divPublicacao.appendChild(spanTitulo);
@@ -451,4 +473,80 @@
         }
       })
   }
+
+  function participar() {
+
+    if (inp_participar.checked) {
+      fetch("/user/participar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idUsuarioServer: sessionStorage.ID_USUARIO,
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            alert("Bem-vindo ao grupo: " + local);
+          })
+
+
+        } else {
+          alert("Houve um erro ao tentar realizar o login!");
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    } else {
+      fetch("/user/remover", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idUsuarioServer: sessionStorage.ID_USUARIO,
+          idGrupoServer: sessionStorage.IDGRUPO,
+        })
+      }).then(function (resposta) {
+
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta))
+
+            alert("Você não participa mais do grupo: " + local);
+          })
+
+
+        } else {
+          alert("Houve um erro ao tentar realizar o login!");
+          console.log("Houve um erro ao tentar realizar o login!");
+
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+
+
+  }
+
 </script>
