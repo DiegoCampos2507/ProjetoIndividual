@@ -590,6 +590,7 @@ hr {
 
 .divPublicacao {
     text-align: justify;
+    color: #1e1f24;
     background-color: #e9e8e8;
     border: #1e1f24 1px solid;
     border-radius: 10px;
@@ -780,13 +781,14 @@ hr {
 .usuario {
     background-color: #babab9;
     width: 60%;
-    height: 400px;
+    height: 100px;
     border-radius: 15px;
     border: 2px solid aliceblue;
     box-shadow: 5px 5px 10px black;
 }
 
-.usuario input {
+.usuario textarea {
+    font-family: poppins, arial;
     background-color: transparent;
     border: transparent;
     color: rgb(39, 39, 39);
@@ -795,7 +797,7 @@ hr {
     height: 100%;
 }
 
-.usuario input::placeholder {
+.usuario textarea::placeholder {
     color: rgb(39, 39, 39);
     font-size: larger;
 }

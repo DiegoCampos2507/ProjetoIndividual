@@ -40,7 +40,7 @@
 
         if (inp_anonimo.checked) {
             b_usuario.innerHTML = "Anônimo(a)";
-            sessionStorage.NICKNAME = "Anônimo(a)" + Math.random();
+            sessionStorage.NICKNAME = "Anônimo(a)" + (Math.random() * 1000).toFixed(0);
 
         } else {
             b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -69,34 +69,45 @@
 
                     var feed = document.getElementById("div_post");
 
-                    for (var i = resposta.resposta.length - 1; i >= 0; i--) {
-                        var publicacao = resposta.resposta[i];
+                    if (resposta == "vazio") {
+
+                        console.log(resposta)
                         var divPublicacao = document.createElement("div");
-                        var spanTitulo = document.createElement("span");
-                        var spanId = document.createElement("span");
-                        var spanData = document.createElement("span");
-                        var spanGrupo = document.createElement("span");
-                        var data = new Date(publicacao.dtPost);
-                        var dataFormat = data.toLocaleString('pt-BR');
-                        spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
-                        spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
-                        spanData.innerHTML += "Data de postagem: <b>" + dataFormat + "</b>.";
-                        spanGrupo.innerHTML += "Comunidade: <b>" + publicacao.nome + "</b>";
+                        var spanTituloVazio = document.createElement("span");
 
+                        spanTituloVazio.innerHTML = "Nada por aqui " + sessionStorage.NOME_USUARIO + "... <br> Seja o primeiro a comentar algo";
+
+                        divPublicacao.appendChild(spanTituloVazio);
                         divPublicacao.className = "divPublicacao";
-                        spanId.className = "subdescricao";
-                        spanGrupo.className = "subdescricao";
-                        spanData.className = "descricao";
-                        spanData.className = "descricao";
-                        divPublicacao.appendChild(spanId);
-                        divPublicacao.appendChild(spanGrupo);
-                        divPublicacao.appendChild(spanTitulo);
-                        divPublicacao.appendChild(spanData);
                         feed.appendChild(divPublicacao);
-                    }
 
+                    } else {
+                        for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+                            var publicacao = resposta.resposta[i];
+                            var divPublicacao = document.createElement("div");
+                            var spanTitulo = document.createElement("span");
+                            var spanId = document.createElement("span");
+                            var spanData = document.createElement("span");
+                            var spanGrupo = document.createElement("span");
+                            var data = new Date(publicacao.dtPost);
+                            var dataFormat = data.toLocaleString('pt-BR');
+                            spanTitulo.innerHTML += "Publicação: <b>'" + publicacao.texto + "'</b>.";
+                            spanId.innerHTML += "Id da Postagem: " + publicacao.idPostagem + ".";
+                            spanData.innerHTML += "Data de postagem: <b>" + dataFormat + "</b>.";
+                            spanGrupo.innerHTML += "Comunidade: <b>" + publicacao.nome + "</b>";
+
+                            divPublicacao.className = "divPublicacao";
+                            spanId.className = "subdescricao";
+                            spanGrupo.className = "subdescricao";
+                            spanData.className = "descricao";
+                            spanData.className = "descricao";
+                            divPublicacao.appendChild(spanId);
+                            divPublicacao.appendChild(spanGrupo);
+                            divPublicacao.appendChild(spanTitulo);
+                            divPublicacao.appendChild(spanData);
+                            feed.appendChild(divPublicacao);
+                        }}
                 })
-
 
             } else {
 

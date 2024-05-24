@@ -80,13 +80,20 @@ function visualizar(req, res) {
 
   userModel.visualizar(id)
     .then(function (resposta) {
-      res.json({
-        resposta,
-        idPostagem: resposta[0].idPostagem,
-        texto: resposta[0].texto,
-        dtPost: resposta[0].dtPost,
-        grupo: resposta[0].nome
-      });
+
+      console.log(resposta);
+      if (resposta.length) {
+
+        res.json({
+          resposta,
+          idPostagem: resposta[0].idPostagem,
+          texto: resposta[0].texto,
+          dtPost: resposta[0].dtPost,
+          nome: resposta[0].nome
+        });
+      } else {
+        res.json("vazio")
+      }
     })
 }
 
@@ -108,14 +115,19 @@ function acessar(req, res) {
 
   userModel.acessar(comunidade)
     .then(function (resposta) {
-      res.json({
-        resposta,
-        idPostagem: resposta[0].idPostagem,
-        texto: resposta[0].texto,
-        dtPost: resposta[0].dtPost,
-        nome: resposta[0].nome
-      })
+      if (resposta.length > 0) {
+        res.json({
+          resposta,
+          idPostagem: resposta[0].idPostagem,
+          texto: resposta[0].texto,
+          dtPost: resposta[0].dtPost,
+          nome: resposta[0].nome
+        })
+      } else {
+        res.json("vazio")
+      }
     })
+
 }
 
 function participar(req, res) {
@@ -123,7 +135,7 @@ function participar(req, res) {
   var idUsuario = req.body.idUsuarioServer;
 
   userModel.participar(idGrupo, idUsuario)
-    .then(function(resposta) {
+    .then(function (resposta) {
       res.json({
         resposta
       })
@@ -135,7 +147,7 @@ function remover(req, res) {
   var idUsuario = req.body.idUsuarioServer;
 
   userModel.remover(idGrupo, idUsuario)
-    .then(function(resposta) {
+    .then(function (resposta) {
       res.json({
         resposta
       })
