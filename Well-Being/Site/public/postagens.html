@@ -72,26 +72,27 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Você não participa mais do grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa1 = 0;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
-  
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Você não participa mais do grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa1 = 0;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO--;
+        
         return false;
       };
     } else {
@@ -107,25 +108,26 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Bem-vindo ao grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa1 = 1;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Bem-vindo ao grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa1 = 1;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO++;
   
         return false;
       };
@@ -145,26 +147,27 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Você não participa mais do grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa2 = 0;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
-  
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Você não participa mais do grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa2 = 0;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO--;
+        
         return false;
       };
     } else {
@@ -180,25 +183,26 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Bem-vindo ao grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa2 = 1;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Bem-vindo ao grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa2 = 1;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO++;
   
         return false;
       };
@@ -218,26 +222,27 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Você não participa mais do grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa3 = 0;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
-  
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Você não participa mais do grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa3 = 0;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO--;
+        
         return false;
       };
     } else {
@@ -253,25 +258,26 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Bem-vindo ao grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa3 = 1;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Bem-vindo ao grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa3 = 1;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO++;
   
         return false;
       };
@@ -291,26 +297,27 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Você não participa mais do grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa4 = 0;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
-  
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Você não participa mais do grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa4 = 0;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO--;
+        
         return false;
       };
     } else {
@@ -326,25 +333,26 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Bem-vindo ao grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa4 = 1;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Bem-vindo ao grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa4 = 1;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO++;
   
         return false;
       };
@@ -364,26 +372,27 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Você não participa mais do grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa5 = 0;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
-  
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Você não participa mais do grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa5 = 0;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO--;
+        
         return false;
       };
     } else {
@@ -399,25 +408,26 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Bem-vindo ao grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa5 = 1;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Bem-vindo ao grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa5 = 1;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO++;
   
         return false;
       };
@@ -437,26 +447,27 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Você não participa mais do grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa6 = 0;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
-  
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Você não participa mais do grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa6 = 0;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO--;
+        
         return false;
       };
     } else {
@@ -472,25 +483,26 @@
             idGrupoServer: sessionStorage.IDGRUPO,
           }),
         })
-          .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!");
-  
-            if (resposta.ok) {
-              resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-  
-                alert("Bem-vindo ao grupo: " + local);
-                window.location.reload(true);
-                sessionStorage.participa6 = 1;
-              });
-            } else {
-              alert("Houve um erro ao tentar realizar o login!");
-              console.log("Houve um erro ao tentar realizar o login!");
-            }
-          })
-          .catch(function (erro) {
-            console.log(erro);
-          });
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+          
+          if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+              console.log("Dados recebidos: ", JSON.stringify(resposta));
+              
+              alert("Bem-vindo ao grupo: " + local);
+              window.location.reload(true);
+              sessionStorage.participa6 = 1;
+            });
+          } else {
+            alert("Houve um erro ao tentar realizar o login!");
+            console.log("Houve um erro ao tentar realizar o login!");
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+        sessionStorage.GRUPOS_USUARIO++;
   
         return false;
       };
@@ -546,7 +558,7 @@
               spanTituloVazio += 
               "";
               spanTitulo.innerHTML +=
-                "Publicação: <b>'" + publicacao.texto + "'</b>.";
+                "Publicação: <b>'" + publicacao.texto + "'</b>";
               spanId.innerHTML +=
                 "Id da Postagem: " + publicacao.idPostagem + ".";
               spanData.innerHTML += "Data de postagem: " + dataFormat + ".";

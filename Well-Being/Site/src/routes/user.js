@@ -31,5 +31,10 @@ router.post("/remover", function(req, res) {
     userController.remover(req, res);
 });
 
+router.post("/contagem", function(req, res) {
+    userController.contagem(req, res);
+
+});
+
 router.post("/acessar")
 module.exports = router;

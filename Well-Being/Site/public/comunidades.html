@@ -8,9 +8,10 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/stylewellbeing.css">
   <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="contagem()">
   <div class="background">
     <div class="header">
       <div class="container-comunidade">
@@ -61,6 +62,11 @@
       </div>
 
       <a href="perfil.html">Perfil</a>
+
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+
     </div>
   </div>
   <div id="mensagem_sair" class="mensagem-sair">
@@ -74,6 +80,67 @@
 </body>
 
 <script>
+const postagens = [];
+
+function contagem() {
+  fetch("/user/contagem", {
+    method: "POST",
+  }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(function (contador) {
+        postagens.push(...contador); // Adiciona todos os itens de contador a postagens
+        plotar();
+      });
+    } else {
+      console.log("Houve um erro ao tentar realizar o login!");
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+  });
+}
+
+function plotar() {
+  const numeros = [];
+  for (var i = 0; i < postagens.length; i++) {
+    var dado = postagens[i].quantidade;
+    numeros.push(dado);
+  }
+
+  const data = {
+    labels: ['Ansiedade', 'Depressão', 'TDAH', 'TOC', 'Transtorno Alimentar', 'Outros'],
+    datasets: [
+      {
+        label: 'Comentários',
+        data: numeros, 
+        borderWidth: 0.5,
+        backgroundColor: ["#3e8bffea", "#3aff75d8", "#fcff3cdc", "#fc3030fb", "#ff3098ea", "#c020ffe8"],
+      }
+    ]
+  };
+
+  const config = {
+    type: 'pie',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+        },
+        title: {
+          display: true,
+          text: 'Número de comentários por comunidade'
+        }
+      }
+    },
+  };
+
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, config);
+}
+
+
+
   div_mensagemA.style.display = `none`;
   div_mensagemB.style.display = `none`;
   div_mensagemTD.style.display = `none`;
@@ -145,7 +212,7 @@
   function direcaoTO() {
     sessionStorage.LOCAL = "TOC";
     window.location.href = "postagens.html";
-    
+
   }
 
   function direcaoTA() {

@@ -58,6 +58,13 @@ function remover(idGrupo, idUsuario) {
   return database.executar(instrucao);
 }
 
+function contagem() {
+  var instrucao = `
+  SELECT count(idPostagem) as quantidade from postagem GROUP BY fkGrupo`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+ 
 module.exports = {
   cadastrar,
   autenticar,
@@ -65,5 +72,6 @@ module.exports = {
   postar,
   acessar,
   participar,
-  remover
+  remover,
+  contagem
 };

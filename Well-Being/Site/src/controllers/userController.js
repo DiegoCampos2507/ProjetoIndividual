@@ -110,50 +110,59 @@ function postar(req, res) {
     })
 }
 
+
 function acessar(req, res) {
   var comunidade = req.body.idGrupoServer;
-
+  
   userModel.acessar(comunidade)
-    .then(function (resposta) {
-      if (resposta.length > 0) {
-        res.json({
-          resposta,
-          idPostagem: resposta[0].idPostagem,
-          texto: resposta[0].texto,
-          dtPost: resposta[0].dtPost,
-          nome: resposta[0].nome
-        })
-      } else {
-        res.json("vazio")
-      }
-    })
-
+  .then(function (resposta) {
+    if (resposta.length > 0) {
+      res.json({
+        resposta,
+        idPostagem: resposta[0].idPostagem,
+        texto: resposta[0].texto,
+        dtPost: resposta[0].dtPost,
+        nome: resposta[0].nome
+      })
+    } else {
+      res.json("vazio")
+    }
+  })
+  
 }
 
 function participar(req, res) {
   var idGrupo = req.body.idGrupoServer;
   var idUsuario = req.body.idUsuarioServer;
-
+  
   userModel.participar(idGrupo, idUsuario)
-    .then(function (resposta) {
-      res.json({
-        resposta
-      })
+  .then(function (resposta) {
+    res.json({
+      resposta
     })
+  })
 };
 
 function remover(req, res) {
   var idGrupo = req.body.idGrupoServer;
   var idUsuario = req.body.idUsuarioServer;
-
+  
   userModel.remover(idGrupo, idUsuario)
-    .then(function (resposta) {
-      res.json({
-        resposta
-      })
+  .then(function (resposta) {
+    res.json({
+      resposta
     })
+  })
 };
 
+function contagem(req,res) {
+  userModel.contagem()
+  .then(function(contador) {
+    res.json(
+      contador
+    )
+  })
+};
 
 module.exports = {
   autenticar,
@@ -162,5 +171,6 @@ module.exports = {
   postar,
   acessar,
   participar,
-  remover
+  remover,
+  contagem
 };
