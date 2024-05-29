@@ -26,13 +26,6 @@ CREATE TABLE GrupoUsuario (
     CONSTRAINT fkUsuario FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
-CREATE TABLE visualizadas (
-idVisualizadas INT AUTO_INCREMENT,
-fkUsuario INT,
-CONSTRAINT fkUsuarioVisualizadas FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-CONSTRAINT pkVisualizadas PRIMARY KEY (idVisualizadas, fkUsuario)
-);
-
 CREATE TABLE postagem (
 idPostagem INT AUTO_INCREMENT,
 fkUsuario INT,
