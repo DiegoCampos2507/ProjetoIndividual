@@ -11,6 +11,10 @@ router.post("/autenticar", function (req, res) {
     userController.autenticar(req, res);
 });
 
+router.post("/autenticarGrupos", function (req, res) {
+    userController.autenticarGrupos(req, res);
+});
+
 router.post("/visualizar", function (req, res) {
     userController.visualizar(req, res);
 });

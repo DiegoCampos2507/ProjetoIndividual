@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon" />
 </head>
 
-<body onload="acessar()">
+<body onload="acessar(), autenticarGrupos()">
   <div class="background">
     <div class="header">
       <div class="container-comunidade">
@@ -50,465 +50,489 @@
 <script>
   var local = sessionStorage.LOCAL;
   titulo.innerHTML += `<h2>${local}</h2>`;
-  var participa1 = sessionStorage.participa1;
-  var participa2 = sessionStorage.participa2;
-  var participa3 = sessionStorage.participa3;
-  var participa4 = sessionStorage.participa4;
-  var participa5 = sessionStorage.participa5;
-  var participa6 = sessionStorage.participa6;
 
-  if (local == "Ansiedade") {
-    sessionStorage.IDGRUPO = 1;
-    if (participa1 == 1) {
-      btn_participar.innerHTML = "Desinscrever";
-      btn_participar.onclick = function deletar() {
-        fetch("/user/remover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Você não participa mais do grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa1 = 0;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
+  var lista_grupos = [];
+
+  function autenticarGrupos() {
+    fetch("/user/autenticarGrupos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idServer: sessionStorage.ID_USUARIO,
+      })
+    }).then(function (resultadoAutenticar) {
+
+      console.log("ESTOU NO THEN DOS GRUPOS entrar()!")
+
+      if (resultadoAutenticar.ok) {
+
+        resultadoAutenticar.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          lista_grupos = [];
+          for (var i = 0; i < json.resultadoAutenticar.length; i++) {
+            lista_grupos.push(json.resultadoAutenticar[i].nome);
+            console.log(json.resultadoAutenticar[i].nome)
           }
         })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO--;
-        
-        return false;
-      };
-    } else {
-      btn_participar.innerHTML = "Inscrever";
-      btn_participar.onclick = function participar() {
-        fetch("/user/participar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Bem-vindo ao grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa1 = 1;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO++;
-  
-        return false;
-      };
-    }
-  } else if (local == "Depressão") {
-    sessionStorage.IDGRUPO = 2;
-    if (participa2 == 1) {
-      btn_participar.innerHTML = "Desinscrever";
-      btn_participar.onclick = function deletar() {
-        fetch("/user/remover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Você não participa mais do grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa2 = 0;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO--;
-        
-        return false;
-      };
-    } else {
-      btn_participar.innerHTML = "Inscrever";
-      btn_participar.onclick = function participar() {
-        fetch("/user/participar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Bem-vindo ao grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa2 = 1;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO++;
-  
-        return false;
-      };
-    }
-  } else if (local == "TDAH") {
-    sessionStorage.IDGRUPO = 3;
-    if (participa3 == 1) {
-      btn_participar.innerHTML = "Desinscrever";
-      btn_participar.onclick = function deletar() {
-        fetch("/user/remover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Você não participa mais do grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa3 = 0;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO--;
-        
-        return false;
-      };
-    } else {
-      btn_participar.innerHTML = "Inscrever";
-      btn_participar.onclick = function participar() {
-        fetch("/user/participar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Bem-vindo ao grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa3 = 1;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO++;
-  
-        return false;
-      };
-    }
-  } else if (local == "Transtorno Alimentar") {
-    sessionStorage.IDGRUPO = 4;
-    if (participa4 == 1) {
-      btn_participar.innerHTML = "Desinscrever";
-      btn_participar.onclick = function deletar() {
-        fetch("/user/remover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Você não participa mais do grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa4 = 0;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO--;
-        
-        return false;
-      };
-    } else {
-      btn_participar.innerHTML = "Inscrever";
-      btn_participar.onclick = function participar() {
-        fetch("/user/participar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Bem-vindo ao grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa4 = 1;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO++;
-  
-        return false;
-      };
-    }
-  } else if (local == "TOC") {
-    sessionStorage.IDGRUPO = 5;
-    if (participa5 == 1) {
-      btn_participar.innerHTML = "Desinscrever";
-      btn_participar.onclick = function deletar() {
-        fetch("/user/remover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Você não participa mais do grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa5 = 0;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO--;
-        
-        return false;
-      };
-    } else {
-      btn_participar.innerHTML = "Inscrever";
-      btn_participar.onclick = function participar() {
-        fetch("/user/participar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Bem-vindo ao grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa5 = 1;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO++;
-  
-        return false;
-      };
-    }
-  } else if (local == "Outros") {
-    sessionStorage.IDGRUPO = 6;
-    if (participa6 == 1) {
-      btn_participar.innerHTML = "Desinscrever";
-      btn_participar.onclick = function deletar() {
-        fetch("/user/remover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Você não participa mais do grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa6 = 0;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO--;
-        
-        return false;
-      };
-    } else {
-      btn_participar.innerHTML = "Inscrever";
-      btn_participar.onclick = function participar() {
-        fetch("/user/participar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO,
-            idGrupoServer: sessionStorage.IDGRUPO,
-          }),
-        })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-          
-          if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-              
-              alert("Bem-vindo ao grupo: " + local);
-              window.location.reload(true);
-              sessionStorage.participa6 = 1;
-            });
-          } else {
-            alert("Houve um erro ao tentar realizar o login!");
-            console.log("Houve um erro ao tentar realizar o login!");
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-        sessionStorage.GRUPOS_USUARIO++;
-  
-        return false;
-      };
-    }
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
   }
 
+  setTimeout(function() {
+    if (local == "Ansiedade") {
+      sessionStorage.IDGRUPO = 1;
+      if (lista_grupos.indexOf("Ansiedade") >= 0) {
+        btn_participar.innerHTML = "Desinscrever";
+        btn_participar.onclick = function deletar() {
+          fetch("/user/remover", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Você não participa mais do grupo: " + local);
+                  lista_grupos.splice(lista_grupos.indexOf("Ansiedade"), 1);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO--;
+
+          return false;
+        };
+      } else {
+        btn_participar.innerHTML = "Inscrever";
+        btn_participar.onclick = function participar() {
+          fetch("/user/participar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Bem-vindo ao grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO++;
+
+          return false;
+        };
+      }
+    } else if (local == "Depressão") {
+      sessionStorage.IDGRUPO = 2;
+      if (lista_grupos.indexOf("Depressão") >= 0) {
+        btn_participar.innerHTML = "Desinscrever";
+        btn_participar.onclick = function deletar() {
+          fetch("/user/remover", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Você não participa mais do grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO--;
+
+          return false;
+        };
+      } else {
+        btn_participar.innerHTML = "Inscrever";
+        btn_participar.onclick = function participar() {
+          fetch("/user/participar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Bem-vindo ao grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO++;
+
+          return false;
+        };
+      }
+    } else if (local == "TDAH") {
+      sessionStorage.IDGRUPO = 3;
+      if (lista_grupos.indexOf("TDAH") >= 0) {
+        btn_participar.innerHTML = "Desinscrever";
+        btn_participar.onclick = function deletar() {
+          fetch("/user/remover", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Você não participa mais do grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO--;
+
+          return false;
+        };
+      } else {
+        btn_participar.innerHTML = "Inscrever";
+        btn_participar.onclick = function participar() {
+          fetch("/user/participar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Bem-vindo ao grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO++;
+
+          return false;
+        };
+      }
+    } else if (local == "Transtorno Alimentar") {
+      sessionStorage.IDGRUPO = 4;
+      if (lista_grupos.indexOf("Transtorno Alimentar") >= 0) {
+        btn_participar.innerHTML = "Desinscrever";
+        btn_participar.onclick = function deletar() {
+          fetch("/user/remover", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Você não participa mais do grupo: " + local);
+                  lista_grupos.splice(lista_grupos.indexOf("Transtorno Alimentar"), 1);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO--;
+
+          return false;
+        };
+      } else {
+        btn_participar.innerHTML = "Inscrever";
+        btn_participar.onclick = function participar() {
+          fetch("/user/participar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Bem-vindo ao grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO++;
+
+          return false;
+        };
+      }
+    } else if (local == "TOC") {
+      sessionStorage.IDGRUPO = 5;
+      if (lista_grupos.indexOf("TOC") >= 0) {
+        btn_participar.innerHTML = "Desinscrever";
+        btn_participar.onclick = function deletar() {
+          fetch("/user/remover", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Você não participa mais do grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO--;
+
+          return false;
+        };
+      } else {
+        btn_participar.innerHTML = "Inscrever";
+        btn_participar.onclick = function participar() {
+          fetch("/user/participar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Bem-vindo ao grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO++;
+
+          return false;
+        };
+      }
+    } else if (local == "Outros") {
+      sessionStorage.IDGRUPO = 6;
+      if (lista_grupos.indexOf("Outros") >= 0) {
+        btn_participar.innerHTML = "Desinscrever";
+        btn_participar.onclick = function deletar() {
+          fetch("/user/remover", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Você não participa mais do grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO--;
+
+          return false;
+        };
+      } else {
+        btn_participar.innerHTML = "Inscrever";
+        btn_participar.onclick = function participar() {
+          fetch("/user/participar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuarioServer: sessionStorage.ID_USUARIO,
+              idGrupoServer: sessionStorage.IDGRUPO,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("ESTOU NO THEN DO entrar()!");
+
+              if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  alert("Bem-vindo ao grupo: " + local);
+                  window.location.reload(true);
+                });
+              } else {
+                alert("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+          sessionStorage.GRUPOS_USUARIO++;
+
+          return false;
+        };
+      }
+    }
+  }, 3000)
 
   function acessar() {
     fetch("/user/acessar", {
@@ -530,53 +554,54 @@
             var feed = document.getElementById("posts");
 
             console.log(resposta)
-            if(resposta == "vazio") {
+            if (resposta == "vazio") {
 
               console.log(resposta)
               var divPublicacao = document.createElement("div");
-              var spanTituloVazio = document.createElement("span"); 
+              var spanTituloVazio = document.createElement("span");
 
               spanTituloVazio.innerHTML = "Nada por aqui " + sessionStorage.NOME_USUARIO + "... <br> Seja o primeiro a comentar algo";
-              
+
               divPublicacao.appendChild(spanTituloVazio);
               divPublicacao.className = "divPublicacao";
               feed.appendChild(divPublicacao);
 
             } else {
-            for (var i = resposta.resposta.length - 1; i >= 0; i--) {
+              for (var i = resposta.resposta.length - 1; i >= 0; i--) {
 
-              var publicacao = resposta.resposta[i];
+                var publicacao = resposta.resposta[i];
 
-              var divPublicacao = document.createElement("div");
-              var spanTitulo = document.createElement("span");
-              var spanId = document.createElement("span");
-              var spanData = document.createElement("span");
-              var spanGrupo = document.createElement("span");
-              var data = new Date(publicacao.dtPost);
-              var dataFormat = data.toLocaleString("pt-BR");
+                var divPublicacao = document.createElement("div");
+                var spanTitulo = document.createElement("span");
+                var spanId = document.createElement("span");
+                var spanData = document.createElement("span");
+                var spanGrupo = document.createElement("span");
+                var data = new Date(publicacao.dtPost);
+                var dataFormat = data.toLocaleString("pt-BR");
 
-              spanTituloVazio += 
-              "";
-              spanTitulo.innerHTML +=
-                "Publicação: <b>'" + publicacao.texto + "'</b>";
-              spanId.innerHTML +=
-                "Id da Postagem: " + publicacao.idPostagem + ".";
-              spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
-              spanGrupo.innerHTML +=
-                "Feita por: " + publicacao.nome;
+                spanTituloVazio +=
+                  "";
+                spanTitulo.innerHTML +=
+                  "Publicação: <b>'" + publicacao.texto + "'</b>";
+                spanId.innerHTML +=
+                  "Id da Postagem: " + publicacao.idPostagem + ".";
+                spanData.innerHTML += "Data de postagem: " + dataFormat + ".";
+                spanGrupo.innerHTML +=
+                  "Feita por: " + publicacao.nome;
 
-              divPublicacao.className = "divPublicacao";
-              spanId.className = "subdescricao";
-              spanGrupo.className = "subdescricao";
-              spanData.className = "descricao";
+                divPublicacao.className = "divPublicacao";
+                spanId.className = "subdescricao";
+                spanGrupo.className = "subdescricao";
+                spanData.className = "descricao";
 
-              divPublicacao.appendChild(spanId);
-              divPublicacao.appendChild(spanGrupo);
-              divPublicacao.appendChild(spanTitulo);
-              divPublicacao.appendChild(spanData);
-              feed.appendChild(divPublicacao);
+                divPublicacao.appendChild(spanId);
+                divPublicacao.appendChild(spanGrupo);
+                divPublicacao.appendChild(spanTitulo);
+                divPublicacao.appendChild(spanData);
+                feed.appendChild(divPublicacao);
 
-            }}
+              }
+            }
           });
         } else {
           console.log("Houve um erro ao tentar realizar o login!");

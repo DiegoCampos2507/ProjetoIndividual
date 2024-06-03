@@ -21,7 +21,7 @@ function autenticar(req, res) {
             resultadoAutenticar,
             nome: resultadoAutenticar[0].nome,
             grupos: resultadoAutenticar[0].grupos,
-            id: resultadoAutenticar[0].idUsuario
+            id: resultadoAutenticar[0].idUsuario,
           });
 
         } else if (resultadoAutenticar.length == 0) {
@@ -34,6 +34,35 @@ function autenticar(req, res) {
         console.log(erro);
         console.log(
           "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+function autenticarGrupos(req, res) {
+  var id = req.body.idServer;
+
+  if (id == undefined) {
+    res.status(400).send("Seu id está indefinido!");
+  } else {
+    userModel
+      .autenticarGrupos(id)
+      .then(function (resultadoAutenticar) {
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+      
+          console.log(resultadoAutenticar);
+          res.json({
+            resultadoAutenticar,
+          });
+
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao coletar os grupos do Usuário! Erro: ",
           erro.sqlMessage
         );
         res.status(500).json(erro.sqlMessage);
@@ -172,5 +201,6 @@ module.exports = {
   acessar,
   participar,
   remover,
-  contagem
+  autenticarGrupos,
+  contagem,
 };
