@@ -89,10 +89,10 @@
       if (local in grupos) {
         sessionStorage.IDGRUPO = grupos[local];
         let grupoNome = local;
-        let isInscrito = lista_grupos.includes(grupoNome);
+        let isInscrito = lista_grupos.indexOf(grupoNome);
         let btn_participar = document.getElementById("btn_participar");
 
-        if(isInscrito) {
+        if(isInscrito >= 0) {
           btn_participar.innerHTML = "Desinscrever";
           postagem_usuario.style.display = 'block';
           botao_usuario.style.display = 'flex';
@@ -120,7 +120,7 @@
         if (resposta.ok) {
           resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
-            alert(`Bem-vindo ao grupo: ${local}`);
+            alert(`Inscrito em: "${local}"`);
             lista_grupos.push(local);
             sessionStorage.GRUPOS_USUARIO++;
             window.location.reload(true);
@@ -148,7 +148,7 @@
         if (resposta.ok) {
           resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
-            alert(`Você não participa mais do grupo: ${local}`);
+            alert(`Você não participa mais do grupo: "${local}"`);
             lista_grupos.splice(lista_grupos.indexOf(local), 1);
             sessionStorage.GRUPOS_USUARIO--;
             window.location.reload(true);

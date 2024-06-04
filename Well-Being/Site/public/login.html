@@ -90,6 +90,9 @@
 
         if (emailVar == "" || senhaVar == "") {
             mensagem_erro.innerHTML = "Preencha os campos corretamente";
+            setTimeout(function() {
+                mensagem_erro.style.display = "none";
+            }, 3000)
             return false;
         }
 
@@ -146,6 +149,7 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
+                alert("Usuário não encontrado!");
 
             }
 

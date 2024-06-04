@@ -643,7 +643,7 @@ hr {
     border-radius: 15px;
     border: 2px solid aliceblue;
     
-    position: absolute;
+    position: fixed;
     top: 35%;
     left: 35%;
     
@@ -666,6 +666,7 @@ hr {
     border: #1e1f24 1px solid;
     border-radius: 15px;
     background-color: aliceblue;
+    cursor: pointer;
 }
 
 .home {
@@ -675,6 +676,7 @@ hr {
     align-self: center;
     margin: 5px;
     font-size: medium;
+    cursor: pointer;
     border: 1px solid #1e1f24;
 }
 
