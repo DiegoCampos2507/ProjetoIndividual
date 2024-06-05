@@ -43,14 +43,27 @@ function visualizar(id) {
 
 function postar(post, idUsuario, idGrupo) {
   var instrucao = `
-  INSERT INTO postagem VALUES (default, ${idUsuario}, "${post}", default, ${idGrupo})`;
+  INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, ${idUsuario}, "${post}", default, ${idGrupo})`;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function postarResposta(post, idUsuario, idGrupo, fkResposta) {
+  var instrucao = `
+  INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo, fkRespondido) VALUES (default, ${idUsuario}, "${post}", default, ${idGrupo}, ${fkResposta})`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
 
 function acessar(comunidade) {
   var instrucao = `
-  SELECT idPostagem, texto, usuario.nome, dtPost FROM postagem JOIN usuario ON idUsuario = fkUsuario JOIN grupo ON fkGrupo = idGrupo WHERE idGrupo = '${comunidade}'`;
+  SELECT post.idPostagem, post.texto, dono.nome, post.dtPost, respondido.idPostagem AS idRespondido, respondido.texto AS RespondidoTexto, UserRespondido.nome AS RespondidoNome, respondido.dtPost AS RespondidoData FROM postagem AS post
+JOIN usuario AS dono ON dono.idUsuario = post.fkUsuario 
+LEFT JOIN postagem AS respondido ON post.fkrespondido = respondido.idPostagem
+LEFT JOIN usuario AS UserRespondido ON UserRespondido.idUsuario = respondido.fkUsuario
+JOIN grupo ON post.fkGrupo = idGrupo 
+WHERE idGrupo = '${comunidade}'
+ORDER BY post.idPostagem DESC`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
@@ -75,13 +88,14 @@ function contagem() {
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
- 
+
 module.exports = {
   cadastrar,
   autenticar,
   autenticarGrupos,
   visualizar,
   postar,
+  postarResposta,
   acessar,
   participar,
   remover,

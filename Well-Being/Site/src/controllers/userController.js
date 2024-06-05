@@ -139,6 +139,19 @@ function postar(req, res) {
     })
 }
 
+function postarResposta(req, res) {
+  var post = req.body.postServer;
+  var idUsuario = req.body.idUsuarioServer;
+  var idGrupo = req.body.idGrupoServer;
+  var fkrespondido = req.body.fkRespondidoServer;
+
+  userModel.postarResposta(post, idUsuario, idGrupo, fkrespondido)
+    .then(function (resposta) {
+      res.json({
+        resposta
+      });
+    })
+}
 
 function acessar(req, res) {
   var comunidade = req.body.idGrupoServer;
@@ -198,6 +211,7 @@ module.exports = {
   cadastrar,
   visualizar,
   postar,
+  postarResposta,
   acessar,
   participar,
   remover,

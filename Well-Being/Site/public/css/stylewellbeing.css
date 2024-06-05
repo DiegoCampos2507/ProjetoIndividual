@@ -609,6 +609,7 @@ hr {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    gap: 3px;
     transition: 0.5s;
 }
 
@@ -840,11 +841,38 @@ hr {
     width: 50%;
 }
 
+.postagem {
+    font-size: larger;
+}
+
 .subdescricao {
-    font-size: smaller;
+    font-size: medium;
 }
 
 .descricao {
+    font-size: smaller;
+}
+
+.div_resposta {
+    display: flex;
+    flex-direction: column;
+}
+
+.resposta {
+    background-color: #babab9;
+    width: 80%;
     font-size: small;
+}
+
+.responder {
+    color: rgb(247, 251, 255);
+    background-color: #a18b39;
+    margin-top: 3%;
+    height: 60%;
+    width: 20%;
+    border-radius: 10px;
+    border: #fff 1px solid;
+    box-shadow: 5px 5px 10px black;
+    cursor: pointer;
 }
 /* #endregion */

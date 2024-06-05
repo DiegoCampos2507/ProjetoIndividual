@@ -24,9 +24,9 @@
     <div class="fantasma"></div>
     <div id="titulo" class="titulo-post" style="color: aliceblue">
       <a href="comunidades.html"><- Voltar para comunidades</a>
-      <div class="participar">
-        <button id="btn_participar" class="participar-checkbox"> Participar </button>
-      </div>
+          <div class="participar">
+            <button id="btn_participar" class="participar-checkbox"> Participar </button>
+          </div>
     </div>
     <div id="postagem_usuario" class="usuario">
       <textarea id="inp_post" maxlength="1000" type="text" placeholder="Sobre o que você quer falar?..."></textarea>
@@ -92,7 +92,7 @@
         let isInscrito = lista_grupos.indexOf(grupoNome);
         let btn_participar = document.getElementById("btn_participar");
 
-        if(isInscrito >= 0) {
+        if (isInscrito >= 0) {
           btn_participar.innerHTML = "Desinscrever";
           postagem_usuario.style.display = 'block';
           botao_usuario.style.display = 'flex';
@@ -162,6 +162,37 @@
       });
     }
 
+    function responderPost(id) {
+      var postVar = document.getElementById("inp_post").value;
+      var idUsuarioVar = sessionStorage.ID_USUARIO;
+      var fkRespondidoVar = id;
+
+      if(postVar == "") {
+        alert("Digite sua resposta antes de responder!");
+        return false;
+      }
+
+      fetch("/user/postarResposta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          postServer: postVar,
+          idUsuarioServer: idUsuarioVar,
+          idGrupoServer: sessionStorage.IDGRUPO,
+          fkRespondidoServer: fkRespondidoVar, 
+        }),
+      }).then(function (resposta) {
+        if (resposta.ok) {
+          alert("Post realizado com sucesso");
+          window.location.reload(true);
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      });
+    }
+
     function acessar() {
       fetch("/user/acessar", {
         method: "POST",
@@ -192,29 +223,76 @@
                 feed.appendChild(divPublicacao);
               } else {
                 resposta.resposta.forEach(publicacao => {
-                  var divPublicacao = document.createElement("div");
-                  var spanTitulo = document.createElement("span");
-                  var spanId = document.createElement("span");
-                  var spanData = document.createElement("span");
-                  var spanGrupo = document.createElement("span");
-                  var data = new Date(publicacao.dtPost);
-                  var dataFormat = data.toLocaleString("pt-BR");
 
-                  spanTitulo.innerHTML = `Publicação: <b>'${publicacao.texto}'</b>`;
-                  spanId.innerHTML = `Id da Postagem: ${publicacao.idPostagem}.`;
-                  spanData.innerHTML = `Data de postagem: ${dataFormat}.`;
-                  spanGrupo.innerHTML = `Feita por: ${publicacao.nome}`;
+                  if (publicacao.idRespondido == null) {
+                    var divPublicacao = document.createElement("div");
+                    var spanTitulo = document.createElement("span");
+                    var spanId = document.createElement("span");
+                    var spanData = document.createElement("span");
+                    var spanGrupo = document.createElement("span");
+                    var data = new Date(publicacao.dtPost);
+                    var dataFormat = data.toLocaleString("pt-BR");
+                    var responder = document.createElement("button");
 
-                  divPublicacao.className = "divPublicacao";
-                  spanId.className = "subdescricao";
-                  spanGrupo.className = "subdescricao";
-                  spanData.className = "descricao";
+                    spanTitulo.innerHTML = `Publicação: <b>'${publicacao.texto}'</b>`;
+                    spanId.innerHTML = `Id da Postagem: ${publicacao.idPostagem}.`;
+                    spanData.innerHTML = `Data de postagem: ${dataFormat}.`;
+                    spanGrupo.innerHTML = `Feita por: <b>${publicacao.nome}</b>`;
+                    responder.innerHTML = `Responder`;
+                    responder.addEventListener("click", function () {responderPost(publicacao.idPostagem)});
 
-                  divPublicacao.appendChild(spanId);
-                  divPublicacao.appendChild(spanGrupo);
-                  divPublicacao.appendChild(spanTitulo);
-                  divPublicacao.appendChild(spanData);
-                  feed.appendChild(divPublicacao);
+                    divPublicacao.className = "divPublicacao";
+                    spanTitulo.className = "postagem";
+                    spanId.className = "subdescricao";
+                    spanGrupo.className = "subdescricao";
+                    spanData.className = "descricao";
+                    responder.className = "responder";
+                    responder.id = "responder_btn"
+
+                    divPublicacao.appendChild(spanId);
+                    divPublicacao.appendChild(spanGrupo);
+                    divPublicacao.appendChild(spanTitulo);
+                    divPublicacao.appendChild(spanData);
+                    divPublicacao.appendChild(responder);
+                    feed.appendChild(divPublicacao);
+
+                  } else {
+                    var divPublicacao = document.createElement("div");
+                    var spanTitulo = document.createElement("span");
+                    var spanId = document.createElement("span");
+                    var spanData = document.createElement("span");
+                    var spanGrupo = document.createElement("span");
+                    var data = new Date(publicacao.dtPost);
+                    var dataFormat = data.toLocaleString("pt-BR");
+                    var divRespondido = document.createElement("div");
+                    var spanRespondido = document.createElement("span");
+                    var spanUserRespondido = document.createElement("span");
+
+                    spanId.innerHTML = `Id da Resposta: ${publicacao.idPostagem}.`;
+                    spanGrupo.innerHTML = `Feita por: <b>${publicacao.nome}</b>`;
+                    spanTitulo.innerHTML = `Resposta: <b>'${publicacao.texto}'</b><br>`;
+                    spanData.innerHTML = `Data de postagem: ${dataFormat}.`;
+                    spanRespondido.innerHTML = `<b>Publicação:</b> ${publicacao.RespondidoTexto}`;
+                    spanUserRespondido.innerHTML = `<b>Feita por:</b> ${publicacao.RespondidoNome}`;
+
+                    divPublicacao.className = "divPublicacao";
+                    divRespondido.className = "div_resposta";
+                    spanTitulo.className = "postagem";
+                    spanId.className = "subdescricao";
+                    spanGrupo.className = "subdescricao";
+                    spanData.className = "descricao";
+                    spanRespondido.className = "resposta";
+                    spanUserRespondido.className = "resposta";
+
+                    divRespondido.appendChild(spanRespondido);
+                    divRespondido.appendChild(spanUserRespondido);
+                    divPublicacao.appendChild(spanId);
+                    divPublicacao.appendChild(spanGrupo);
+                    divPublicacao.appendChild(spanTitulo);
+                    divPublicacao.appendChild(divRespondido)
+                    divPublicacao.appendChild(spanData);
+                    feed.appendChild(divPublicacao);
+                  }
                 });
               }
             });
