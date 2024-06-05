@@ -33,10 +33,12 @@ CONSTRAINT fkUsuarioPostagem FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuari
 CONSTRAINT pkPostagem PRIMARY KEY (idPostagem, fkUsuario),
 texto VARCHAR(1000),
 dtPost TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-fkVisualizada INT, 
-CONSTRAINT fkVizualizadaPostagem FOREIGN KEY (fkVisualizada) REFERENCES visualizadas(idVisualizadas),
 fkGrupo INT,
-CONSTRAINT fkGrupoPost FOREIGN KEY (fkGrupo) REFERENCES grupo(idGrupo)
+CONSTRAINT fkGrupoPost FOREIGN KEY (fkGrupo) REFERENCES grupo(idGrupo),
+fkRespondido INT,
+CONSTRAINT fkRespostaPost FOREIGN KEY (fkRespondido) REFERENCES postagem(idPostagem),
+fkUsuarioRespondido INT,
+CONSTRAINT fkRespostaUsuario FOREIGN KEY (fkUsuarioRespondido) REFERENCES postagem(fkUsuario)
 );
 
 INSERT INTO grupo VALUES 
@@ -53,14 +55,12 @@ SELECT * FROM GrupoUsuario;
 
 INSERT INTO usuario VALUES (default, "Diego", "Campos", "2005-07-25", "diego@gmail.com", "12345678", null);
 
-INSERT INTO postagem VALUES (default, 1, "Olá", default, null, 1);
-INSERT INTO postagem VALUES (default, 1, "Olá", default, null, 2);
-INSERT INTO postagem VALUES (default, 1, "Olá", default, null, 3);
-INSERT INTO postagem VALUES (default, 1, "Olá", default, null, 4);
-INSERT INTO postagem VALUES (default, 1, "Olá", default, null, 5);
-INSERT INTO postagem VALUES (default, 1, "Olá", default, null, 6);
-
-DELETE FROM postagem WHERE idPostagem = 6;
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 1);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 2);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 3);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 4);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 5);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo, fkRespondido) VALUES (default, 1, "Olá", default, 6, 1);
 
 INSERT INTO GrupoUsuario VALUES (default, 1, 1);
 
