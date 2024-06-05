@@ -617,6 +617,35 @@ hr {
     transition: 0.5s;
     transform: scale(105%,105%);
 }
+
+.editar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 3%;
+    display: none;
+}
+
+.editar h3 {
+    margin: 0;
+}
+
+.editar h5 {
+    margin: 0;
+    text-decoration: none;
+}
+
+.alteracoes {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+
 /* #endregion */
 
 /* #region Comunidade */
@@ -861,6 +890,7 @@ hr {
 .resposta {
     background-color: #babab9;
     width: 80%;
+    padding: 2px;
     font-size: small;
 }
 

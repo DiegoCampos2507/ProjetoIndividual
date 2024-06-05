@@ -54,13 +54,17 @@ SELECT * FROM postagem;
 SELECT * FROM GrupoUsuario;
 
 INSERT INTO usuario VALUES (default, "Diego", "Campos", "2005-07-25", "diego@gmail.com", "12345678", null);
+INSERT INTO usuario VALUES (default, "Debora", "Magalhães", "2005-07-25", "debs@gmail.com", "87654321", null);
+INSERT INTO usuario VALUES (default, "Jorge", "Fonseca", "2005-07-25", "jorginho@gmail.com", "87651234", null);
+INSERT INTO usuario VALUES (default, "Mariana", "Ramos", "2005-07-25", "marii@gmail.com", "54321234", null);
 
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 1);
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 2);
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 3);
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 4);
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Olá", default, 5);
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo, fkRespondido) VALUES (default, 1, "Olá", default, 6, 1);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Essa sessão trata apenas sobre Ansiedade", default, 1);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 2, "Tenho um amigo que tem depressão, como posso ajudar?", default, 2);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 3, "Sinto que desde que comecei a terapia meu TDAH vem melhorando", default, 3);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 4, "Consegui entender a importância de me alimentar da forma adequada", default, 4);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 3, "Meu marido descobriu que tem TOC e não sei como ter uma boa vivência...", default, 5);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Vocês sabem filmes que tratem de saúde mental de uma forma realista??", default,  6);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo, fkRespondido) VALUES (default, 2, "Tente se mostrar presente para ele, mas nunca force a barra", default, 2, 2);
 
 INSERT INTO GrupoUsuario VALUES (default, 1, 1);
 

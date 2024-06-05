@@ -16,16 +16,32 @@
                 <a href="comunidades.html"><- Ver comunidades</a>
                         <img src="assets/images/logoSimples.png" alt="">
                         <h3>Olá, <b><span id="b_usuario">usuario</span></b>!</h3>
-
-                        <label for="anonimo">Perfil anônimo<input onclick="verificar()" type="checkbox" id="inp_anonimo"
-                                name="anonimo"></label>
+                        <button onclick="editar()">Editar perfil</button>
                         <a href="Protótipo_WellBeing.pdf">Termos de Uso</a>
             </div>
-            <div class="notificacao">
+            <div id="conteudo" class="notificacao">
                 <span>Você está participando atualmente de <b><span id="b_grupos">0</span></b> comunidade(s).</span>
                 <h3 for="alertas">Suas Postagens:</h3>
                 <div class="alertas">
                     <div id="div_post" class="div_post"></div>
+                </div>
+            </div>
+            <div id="editar" class="editar">
+                <h3>Edição de perfil</h3>
+                <h5>Digite apenas os campos que você deseja alterar</h5>
+                <div class="alteracoes">
+                    <label for="editar_nome">Altere seu nome:</label>
+                    <input placeholder="Digite seu nome" type="text" id="editar_nome">
+                    <label for="editar_email">Altere seu email:</label>
+                    <input placeholder="Digite seu email" type="text" id="editar_email">
+                    <label for="editar_senha">Altere sua senha:</label>
+                    <input placeholder="Digite seu senha" type="text" id="editar_senha">
+                    <label for="editar_senha">Confirme com a senha atual:</label>
+                    <input placeholder="Digite seu senha" type="text" id="editar_confirmar">
+                    <div class="botoes">
+                        <button onclick="editarBanco()">Editar</button>
+                        <button onclick="editarFechar()">Cancelar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,15 +52,65 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_grupos.innerHTML = sessionStorage.GRUPOS_USUARIO;
 
-    function verificar() {
+    var NOME_USUARIO = sessionStorage.NOME_USUARIO;
+    var EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
+    var SENHA_USUARIO = sessionStorage.SENHA_USUARIO;
 
-        if (inp_anonimo.checked) {
-            b_usuario.innerHTML = "Anônimo(a)";
-            sessionStorage.NICKNAME = "Anônimo(a)" + (Math.random() * 1000).toFixed(0);
+    function editar() {
+        var edicao = document.getElementById("editar");
 
+        edicao.style.display = "flex";
+    }
+
+    function editarFechar() {
+        var edicao = document.getElementById("editar");
+
+
+        edicao.style.display = "none";
+    }
+
+    function editarBanco() {
+        var nome = editar_nome.value;
+        var email = editar_email.value;
+        var senha = editar_senha.value;
+        var confirmar = editar_confirmar.value;
+        var alterarNome = false;
+        var alterarEmail = false;
+        var alterarSenha = false;
+
+        if(nome != "") {
+            alterarNome = true;
+        }
+
+        if(email != "") {
+            alterarEmail = true;
+        }
+
+        if(senha != "") {
+            alterarSenha = true;
+        }
+
+        if (nome == "" && email == "" && senha == "" && confirmacao) {
+            alert("Insira o valor que você deseja alterar");
+        } else if (nome == NOME_USUARIO || email == EMAIL_USUARIO || senha == SENHA_USUARIO) {
+            alert("Dado correspondente com o do banco de dados! Impossível alterar");
         } else {
-            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-            sessionStorage.NICKNAME = sessionStorage.NOME_USUARIO;
+            if (confirmar != SENHA_USUARIO) {
+                alert("Senha incorreta inserida")
+            } else {
+
+                fetch("/user/atualizarDados", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        idServer: sessionStorage.ID_USUARIO,
+                    })
+                }).then(function (resposta) {
+
+                })
+            }
         }
     }
 
@@ -106,7 +172,8 @@
                             divPublicacao.appendChild(spanTitulo);
                             divPublicacao.appendChild(spanData);
                             feed.appendChild(divPublicacao);
-                        }}
+                        }
+                    }
                 })
 
             } else {
