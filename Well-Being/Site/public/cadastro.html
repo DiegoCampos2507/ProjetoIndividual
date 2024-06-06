@@ -125,9 +125,6 @@
         } else if (senhaVar.length < 8) {
             mensagem_erro.innerHTML = `<h1>Erro!</h1>Insira uma senha com pelo menos 8 carecteres`;
             erro();
-        // } else if (senhaVar.indexOf("!") <= 0|| senhaVar.indexOf("@") <= 0 || senhaVar.indexOf("#") <= 0 || senhaVar.indexOf("$") <= 0 || senhaVar.indexOf("&") <= 0 || senhaVar.indexOf("*") <= 0) {
-        //     mensagem_erro.innerHTML = `<h1>Erro!</h1>A senha deve conter um caractere especial`;
-        //     erro();
         } else if (senhaVar != confirmacaoVar) {
             mensagem_erro.innerHTML = `<h1>Erro!</h1>A confirmação de senha falhou`;
             erro();
@@ -152,7 +149,7 @@
 
                         mensagem_sucesso.innerHTML =
                             `Cadastro realizado com sucesso! Redirecionando para tela de Login...
-                            <img src="assets/images/loading-gif.gif" alt="" width="30px" height="30px">`;
+                            <img src="assets/images/gifWellBeing.gif" alt="" width="100px" height="100px">`;
                         mensagem_sucesso.style.display = "block";
                         setTimeout(() => {
                             mensagem_sucesso.style.display = "none";

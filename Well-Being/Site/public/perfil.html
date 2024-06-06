@@ -78,18 +78,6 @@
         var alterarEmail = false;
         var alterarSenha = false;
 
-        if(nome != "") {
-            alterarNome = true;
-        }
-
-        if(email != "") {
-            alterarEmail = true;
-        }
-
-        if(senha != "") {
-            alterarSenha = true;
-        }
-
         if (nome == "" && email == "" && senha == "" && confirmacao) {
             alert("Insira o valor que você deseja alterar");
         } else if (nome == NOME_USUARIO || email == EMAIL_USUARIO || senha == SENHA_USUARIO) {
@@ -99,13 +87,27 @@
                 alert("Senha incorreta inserida")
             } else {
 
+                if (nome == "") {
+                    nome = NOME_USUARIO;
+                }
+
+                if (email == "") {
+                    email = EMAIL_USUARIO;
+                }
+
+                if (senha == "") {
+                    senha = SENHA_USUARIO;
+                }
+
                 fetch("/user/atualizarDados", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        idServer: sessionStorage.ID_USUARIO,
+                        nomeServer: nome,
+                        emailServer: email,
+                        senhaServer: senha,
                     })
                 }).then(function (resposta) {
 
