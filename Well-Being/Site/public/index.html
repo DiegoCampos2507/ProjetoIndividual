@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="assets/images/logoSimples.png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="curiosidadeRandom()">
     <div class="background">
         <div class="header">
             <div class="container">
@@ -32,7 +32,7 @@
                     <a href="login.html">
                         Login
                     </a>
-                    <a  href="cadastro.html">
+                    <a href="cadastro.html">
                         Cadastro
                     </a>
                 </ul>
@@ -46,7 +46,7 @@
                 <div class="main-title">
                     <u>
                         <h1>Saúde Mental</h1>
-                        <p>Precisamos conversar</p>
+                        <p>Precisamos conversar...</p>
                     </u>
                 </div>
             </div>
@@ -54,9 +54,13 @@
             <span class="texto">
                 <div class="desc-img">
                     <h3>Definição</h3>
-                    Saúde mental se refere ao estado de bem-estar de cada um que possibilita que este desenvolva suas habilidades pessoais para enfrentar os obstáculos da vida. <br> <br> 
-                    Ter saúde mental, de acordo com a OMS (Organização Mundial da Saúde), significa que o indivíduo está em tal estado de bem-estar que consegue lidar com o estresse rotineiro, consegue ser produtivo e ainda contribuir com a sociedade. <br> <br>
-                    Em caso contrario, o índividuo perde o manejo das emoções, manifestando alterações físicas, comportamentais e até hormonais.
+                    Saúde mental se refere ao estado de bem-estar de cada um que possibilita que este desenvolva suas
+                    habilidades pessoais para enfrentar os obstáculos da vida. <br> <br>
+                    Ter saúde mental, de acordo com a OMS (Organização Mundial da Saúde), significa que o indivíduo está
+                    em tal estado de bem-estar que consegue lidar com o estresse rotineiro, consegue ser produtivo e
+                    ainda contribuir com a sociedade. <br> <br>
+                    Em caso contrario, o índividuo perde o manejo das emoções, manifestando alterações físicas,
+                    comportamentais e até hormonais.
                 </div>
                 <div class="img1">
                     <img src="assets/images/conceito-de-memoria-com-pecas-de-quebra-cabeca-e-cabeca-scaled.jpg" alt="">
@@ -69,19 +73,24 @@
                 </div>
                 <div class="desc-img">
                     <h3>Importância</h3>
-                    Com uma boa saúde mental, lidamos melhor com situações diárias, como tomar decisões ou manter relacionamentos saudáveis.
-                    <br> Além disso, ao tratarmos desse assunto podemos descobrir traumas que, quando tratados, deixam a vida muito mais leve, portanto o paradigma que contorna a saúde mental deve ser extinguido para que a sociedade como um todo possa se desenvolver.
+                    Com uma boa saúde mental, lidamos melhor com situações diárias, como tomar decisões ou manter
+                    relacionamentos saudáveis.
+                    <br> Além disso, ao falarmos desses assuntos podemos descobrir traumas que, quando tratados, deixam a
+                    vida muito mais leve, portanto o paradigma que contorna a saúde mental deve ser extinguido para que
+                    a sociedade como um todo possa se desenvolver.
                 </div>
             </span>
             <hr>
             <span class="boxes">
                 <div class="card">
                     <h2>Missão</h2>
-                    Permitir a troca de informações e vivências dentro da comunidade gerando o sentimento de acolhimento entre os usuários.
+                    Permitir a troca de informações e vivências dentro da comunidade gerando o sentimento de acolhimento
+                    entre os usuários.
                 </div>
                 <div class="card">
                     <h2>Visão</h2>
-                    Fazer com que o conceito de coletivo se torne cada vez mais presente, além disso disseminar o conhecimento psicológico uns com os outros.
+                    Fazer com que o conceito de coletivo se torne cada vez mais presente, além disso disseminar o
+                    conhecimento psicológico uns com os outros.
                 </div>
                 <div class="card">
                     <h2>Valores</h2>
@@ -92,10 +101,20 @@
                 </div>
             </span>
             <hr>
+            <center>
+                <div class="curiosidades">
+                    <h2>Curiosidades</h2>
+                <span id="curiosidade">Roberto Carlos, Rita Lee, Brad Pitt e Lady Gaga são algumas das celebridades que
+                    já enfrentaram algum tipo de transtorno mental.</span>
+                    <h5>Dica: Comente o que você achou dessas curiosidades em um dos nossos fóruns.</h5>
+                </div>
+            </center>
+            <hr>
             <div class="chamada">
                 <h2>Participe da comunidade!</h2>
                 <h3>Você não está sozinho</h3>
                 <Button onclick="cadastrar()">Cadastre-se</Button>
+                <h4>Temos fóruns para falar sobre qualquer tema</h4>
             </div>
         </div>
         <div class="footer">
@@ -119,7 +138,38 @@
 
 <script>
     function cadastrar() {
-        window.location = "cadastro.html"   
+        window.location = "cadastro.html"
     }
+
+    var aleatorio = 0
+
+    setInterval(function curiosidadeRandom() {
+        aleatorio = (Math.random() * 10).toFixed(0);
+
+        if (aleatorio == 0) {
+            curiosidade.innerHTML = "Abusar de álcool e drogas pode causar transtornos mentais."
+        } else if (aleatorio == 1) {
+            curiosidade.innerHTML = "Roberto Carlos, Rita Lee, Brad Pitt e Lady Gaga são algumas das celebridades que já enfrentaram algum tipo de transtorno mental.";
+        } else if (aleatorio == 2) {
+            curiosidade.innerHTML = "O Transtorno Obsessivo Compulsivo (TOC) é conhecido como a “doença do segredo” pois na maioria das vezes os pacientes tentam esconder seus sintomas compulsivos, o que atrasa a procura por tratamento médico especializado.";
+        } else if (aleatorio == 3) {
+            curiosidade.innerHTML = "Depressão não é falta de força de vontade. é uma doença que tem sintomas, particularidade e, acima de tudo, tratamento.";
+        } else if (aleatorio == 4) {
+            curiosidade.innerHTML = "Pelo menos 25% da população mundial tem ou terá algum tipo de transtorno mental. No entanto, a grande maioria dos distúrbios tem cura ou tratamento.";
+        } else if (aleatorio == 5) {
+            curiosidade.innerHTML = "De acordo com a Organização Mundial da Saúde, as mulheres têm duas vezes mais chances de desenvolverem transtornos de ansiedade e três vezes mais chances de desenvolverem transtornos depressivos.";
+        } else if (aleatorio == 6) {
+            curiosidade.innerHTM = "Metade de todas as condições de saúde mental começam aos 14 anos de idade, mas a maioria dos casos não é detectada nem tratada.";
+        } else if (aleatorio == 7) {
+            curiosidade.innerHTML = "Transtornos como depressão e ansiedade podem impedir uma pessoa de trabalhar.";
+        } else if (aleatorio == 8) {
+            curiosidade.innerHTML = "Os transtornos mentais são responsáveis por mais de um terço do número total de incapacidades nas Américas.";
+        } else if (aleatorio == 9) {
+            curiosidade.innerHTML = "Estresse NÃO é um sinal de dedicação ao trabalho.";
+        } else {
+            curiosidade.innerHTML = "Problemas de saúde mental NÃO são sinais de fraqueza.";
+        }
+
+    }, 6000);
 
 </script>
