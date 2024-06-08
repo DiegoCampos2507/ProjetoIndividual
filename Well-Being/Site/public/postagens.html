@@ -107,7 +107,7 @@
     }
 
     function inscrever() {
-      fetch("/user/participar", {
+      fetch("/comunidade/participar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -135,7 +135,7 @@
     }
 
     function desinscrever() {
-      fetch("/user/remover", {
+      fetch("/comunidade/remover", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -194,7 +194,7 @@
     }
 
     function acessar() {
-      fetch("/user/acessar", {
+      fetch("/postagem/acessar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
