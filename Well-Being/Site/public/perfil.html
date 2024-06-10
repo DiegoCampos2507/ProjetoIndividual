@@ -84,7 +84,7 @@
             alert("Dado correspondente com o do banco de dados! Impossível alterar");
         } else {
             if (confirmar != SENHA_USUARIO) {
-                alert("Senha incorreta inserida")
+                alert("Senha de confirmação incorreta!")
             } else {
 
                 if (nome == "") {
@@ -108,9 +108,18 @@
                         nomeServer: nome,
                         emailServer: email,
                         senhaServer: senha,
+                        idServer: sessionStorage.ID_USUARIO,
                     })
                 }).then(function (resposta) {
+                    if (resposta.ok) {
+                        alert("Usuário atualizado com sucesso!");
+                        sessionStorage.NOME_USUARIO = nome;
+                        sessionStorage.SENHA_USUARIO = senha;
+                        sessionStorage.EMAIL_USUARIO = email;
 
+                        window.location.reload(true);
+
+                    }
                 })
             }
         }

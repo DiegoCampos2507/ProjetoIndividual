@@ -21,6 +21,8 @@ function autenticar(req, res) {
             resultadoAutenticar,
             nome: resultadoAutenticar[0].nome,
             grupos: resultadoAutenticar[0].grupos,
+            email: resultadoAutenticar[0].email,
+            senha: resultadoAutenticar[0].senha,
             id: resultadoAutenticar[0].idUsuario,
           });
 
@@ -104,8 +106,28 @@ function cadastrar(req, res) {
     });
 }
 
+function atualizarDados(req, res) {
+  var nome = req.body.nomeServer;
+  var senha = req.body.senhaServer;
+  var email = req.body.emailServer;
+  var id = req.body.idServer;
+
+  userModel.atualizarDados(nome, senha, email, id)
+  .then(function(resposta) {
+    res.json(resposta);
+  }) 
+  .catch(function(erro) {
+    console.log(
+      "\nHouve um erro ao realizar a atualização! Erro: ",
+      erro.sqlMessage
+    );
+    res.status(500).json(erro.sqlMessage);
+  })
+}
+
 module.exports = {
   autenticar,
   cadastrar,
   autenticarGrupos,
+  atualizarDados,
 };

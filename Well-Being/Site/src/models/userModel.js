@@ -33,8 +33,17 @@ function cadastrar(nome, sobrenome, nasc, email, senha) {
   return database.executar(instrucao);
 }
 
+function atualizarDados(nome, senha, email, id) {
+  var instrucao = `
+  UPDATE usuario SET nome = "${nome}", email = "${email}", senha = "${senha}" WHERE idUsuario = "${id}";
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   cadastrar,
   autenticar,
   autenticarGrupos,
+  atualizarDados,
 };

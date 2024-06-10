@@ -15,4 +15,8 @@ router.post("/autenticarGrupos", function (req, res) {
     userController.autenticarGrupos(req, res);
 });
 
+router.post("/atualizarDados", function (req, res) {
+    userController.atualizarDados(req,res);
+});
+
 module.exports = router;
