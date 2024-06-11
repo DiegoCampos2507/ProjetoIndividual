@@ -63,7 +63,7 @@ INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (def
 INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 3, "Sinto que desde que comecei a terapia meu TDAH vem melhorando", default, 3);
 INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 4, "Consegui entender a importância de me alimentar da forma adequada", default, 4);
 INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 3, "Meu marido descobriu que tem TOC e não sei como ter uma boa vivência...", default, 5);
-INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Vocês sabem filmes que tratem de saúde mental de uma forma realista??", default,  6);
+INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo) VALUES (default, 1, "Vocês sabem filmes que tratem de saúde mental de uma forma leve??", default,  6);
 INSERT INTO postagem (idPostagem, fkUsuario, texto, dtPost, fkGrupo, fkRespondido) VALUES (default, 2, "Tente se mostrar presente para ele, mas nunca force a barra", default, 2, 2);
 
 INSERT INTO GrupoUsuario VALUES (default, 1, 1);

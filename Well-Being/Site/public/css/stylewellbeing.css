@@ -337,7 +337,7 @@ hr {
 /* #region SobreMim */
 .selfie {
     background-color: #8c7729;
-    width: 50%;
+    width: 30%;
     height: 50vh;
     border-radius: 50px;
     display: flex;
@@ -348,7 +348,8 @@ hr {
 }
 
 .selfie img {
-    width: 30vh;
+    width: 35vh;
+    border-radius: 25px;
 }
 
 .sobremim {

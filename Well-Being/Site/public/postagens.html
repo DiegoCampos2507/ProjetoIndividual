@@ -172,7 +172,7 @@
         return false;
       }
 
-      fetch("/user/postarResposta", {
+      fetch("/postagem/postarResposta", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -323,7 +323,7 @@
       var postVar = document.getElementById("inp_post").value;
       var idUsuarioVar = sessionStorage.ID_USUARIO;
 
-      fetch("/user/postar", {
+      fetch("/postagem/postar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
